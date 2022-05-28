@@ -3,11 +3,18 @@ import React, { Component } from 'react';
 import * as Actions from '../actions/types.jsx';
 import { connect } from 'react-redux';
 
-class Restaurant extends Component {
 
+class Restaurant extends Component {
+  
   render() {
     return (
-      <div>Restaurant Component</div>
+      <div>
+        <div>Restaurant Component</div>
+        <div>Restaurant Name: {this.props.name}</div>
+        <div>Price: {this.props.price}</div>
+        <div>Rating: {this.props.rating}</div>
+      </div>
+      
     );
   }
 }
@@ -47,6 +54,6 @@ export default Restaurant;
    </div>
  )
  };
- 
+ e
  export default connect(mapStateToProps, mapDispatchToProps)(Restaurant);
  */

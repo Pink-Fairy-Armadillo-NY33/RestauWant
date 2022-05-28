@@ -4,6 +4,14 @@ import { connect } from 'react-redux';
 import Search from '../components/Search.jsx';
 import DisplayContainer from './DisplayContainer.jsx';
 import Filter from '../components/Filter.jsx';
+import * as actions from '../actions/types.jsx';
+
+const mapStateToProps = ({
+  restaurants: { totalRestaurants }, 
+}) => ({
+  totalRestaurants   
+});
+
 
 
 class MainContainer extends Component {

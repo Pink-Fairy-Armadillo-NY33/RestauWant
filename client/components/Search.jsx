@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import from child components...
 
+const mapStateToProps = state => ({
+
+});
+
+const mapDispatchToProps = dispatch => ({
+  // add action creators
+});
+
 class Search extends Component {
   render() {
     return (
@@ -9,4 +17,6 @@ class Search extends Component {
     );
   }
 }
+
 export default Search;
+// export default connect(mapStateToProps, mapDispatchToProps)(Search);

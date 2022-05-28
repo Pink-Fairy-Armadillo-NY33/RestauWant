@@ -8,4 +8,5 @@ const store = createStore(
   {},
   applyMiddleware(reduxThunk)
 );
+ 
 export default store;

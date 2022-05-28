@@ -13,7 +13,7 @@ const initialState = {
     latitute: 34.6037,
     longitude: 34.6037
   }},
-  restaurantsToBeServed: [],
+  restaurantsToBeDisplayed: [],
   cuisinePreference: '',
   // loggedIn: 'true'
 };
@@ -21,17 +21,22 @@ const initialState = {
 const RestaurantsReducer = (state = initialState, action) => {
   let restaurantList;
   switch (action.type) {
-    case types.GET_RESTAURANT:
-      
-      break;
+    case types.GET_ALL_RESTAURANTS:
+      return action.payload;
   
+    case types.GET_RESTAURANT_BY_NAME:
+      return action.payload;
+
     default:
-      break;
+      return state;
+
+
   }
+
+  
 
 
 };
-
 
 
 export default RestaurantsReducer;
