@@ -3,20 +3,25 @@ import { connect } from 'react-redux';
 // import from child components...
 import Restaurant from '../components/Restaurant.jsx';
 
-import { getAllRestaurants } from '../actions/restaurantActionCreator.jsx';
+import { getRestaurants } from '../actions/restaurantActionCreator.jsx';
 
 
 class DisplayContainer extends Component {
 
+  componentDidMount() {
+  }
+
   render() {
-    this.props.getAllRestaurants();
     // return value of restaurants reducer;
-    const restaurants = this.props.restaurants;
+    const restaurants = this.props.restaurants.restaurantsToBeDisplayed;
     const restaurantsArr = [];
+    // console.log(restaurants);
+     
     for (let i = 0; i < restaurants.length; i++) {
-      const { name, price, rating } = restaurants[i];
-      restaurantsArr.push(<Restaurant name={name} price={price} rating={rating} />);
+      const { id, name, price, rating, location, image_url} = restaurants[i];
+      restaurantsArr.push(<Restaurant key={id} imgUrl={image_url} name={name} address={location.display_address} price={price} rating={rating} />);
     }
+    
 
     return (
       <div>
@@ -31,4 +36,4 @@ function mapStateToProps(state) {
   return state;
 }
 
-export default connect(mapStateToProps, { getAllRestaurants } )(DisplayContainer);
+export default connect(mapStateToProps, { getRestaurants } )(DisplayContainer);

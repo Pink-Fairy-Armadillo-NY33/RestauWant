@@ -11,9 +11,12 @@ ReactDOM.render(
   <div>
     Something here
     <Provider store={store}>
-      <MainContainer />
       <Header />
+      <MainContainer />
     </Provider>
   </div>,
   document.querySelector('#root')
 );
+
+
+// do we need to export default App;?

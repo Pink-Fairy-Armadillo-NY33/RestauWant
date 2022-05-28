@@ -15,6 +15,7 @@ class SearchContainer extends Component {
   }
 }
 
+export default SearchContainer;
 
 
-export default connect(mapStateToProps, null)(SearchContainer);
+// export default connect(mapStateToProps, null)(SearchContainer);

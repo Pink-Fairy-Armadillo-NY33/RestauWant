@@ -10,7 +10,10 @@ class Restaurant extends Component {
     return (
       <div>
         <div>Restaurant Component</div>
+        <div><img src={this.props.imgUrl} alt=""/></div>
         <div>Restaurant Name: {this.props.name}</div>
+        <div>Address:</div>
+        <div>{this.props.address.join(' ')}</div>
         <div>Price: {this.props.price}</div>
         <div>Rating: {this.props.rating}</div>
       </div>
