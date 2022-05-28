@@ -95,10 +95,16 @@ Landing page:
 
 
 
-MainContainer (cuisine/location toggle OR search bar) 
+MainContainer (cuisine/location toggle OR search bar)      ---          Head
                |                    
     
-    DisplayContainer holds the picture, name, location, stars
+        DisplayContainer
+    /               |             \
+    Search      DisplayContainer    Filter
+(mapstatetoProps)     
+                    |
+            Restaurant  
+            (mapStatetoProps)
 
 
              

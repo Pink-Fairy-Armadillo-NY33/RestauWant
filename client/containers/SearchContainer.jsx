@@ -11,8 +11,10 @@ class SearchContainer extends Component {
       <div>
           Search Container
       </div>
-    )  
+    );  
   }
 }
 
-export default SearchContainer;
+
+
+export default connect(mapStateToProps, null)(SearchContainer);

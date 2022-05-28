@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import from child components...
 
+const mapStateToProps = state => ({
+
+});
+
+const mapDispatchToProps = dispatch => ({
+  // add action creators
+});
+
 
 class Header extends Component {
 
@@ -10,7 +18,7 @@ class Header extends Component {
       <div>
           Header Component
       </div>
-    ) 
+    ); 
   }
 }
 
