@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import from child components...
 import Restaurant from '../components/Restaurant.jsx';
+
 import { getAllRestaurants } from '../actions/restaurantActionCreator.jsx';
+
 
 class DisplayContainer extends Component {
 

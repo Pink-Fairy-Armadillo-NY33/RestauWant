@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MainContainer from './containers/MainContainer.jsx';
 import Header from './components/Header.jsx';
+
 import store from '../client/store.jsx';
 import { Provider } from 'react-redux';
 

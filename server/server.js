@@ -5,21 +5,15 @@ const port = 8080;
 const mongoose = require('mongoose');
 const userController = require('./controllers/userController');
 const restaurantController = require('./controllers/restaurantController');
-const MONGO_URI = "mongodb+srv://project:scratchproject@cluster0.an6pg.mongodb.net/?retryWrites=true&w=majority"
+const MONGO_URI = 'mongodb+srv://project:scratchproject@cluster0.an6pg.mongodb.net/?retryWrites=true&w=majority';
 
-// mongoose.connect("mongodb+srv://lilkobe:scratchproject@cluster0.an6pg.mongodb.net/?retryWrites=true&w=majority", {useNewUrlParser: true}, {useUnifiedTopology: true});
-// mongoose.connection.once('open', () => {
-//     console.log('Connected to Database');
-//   });
-
-
-  mongoose.connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    dbName: 'ResturantDb'
+mongoose.connect(MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  dbName: 'ResturantDb'
 })
-    .then(() => console.log('Connected to Mongo DB.'))
-    .catch(err => console.log(err));
+  .then(() => console.log('Connected to Mongo DB.'))
+  .catch(err => console.log(err));
 
 app.use(express.json());
 
@@ -31,31 +25,31 @@ app.use('/api/user', userRouter);
 // Create a user in the database
 // http://localhost:8080/user/
 userRouter.post('/', userController.createUser, (req, res) => {
-    return res.send(res.locals.newUser)
+  return res.send(res.locals.newUser);
 });
 
 // Get all users from the database
 // http://localhost:8080/user/
 userRouter.get('/', userController.getAllUsers, (req, res) => {
-    return res.send(res.locals.allRetrievedUsers)
+  return res.send(res.locals.allRetrievedUsers);
 });
 
 // Get a specific user from the database
 // http://localhost:8080/user/"name"
 userRouter.get('/:name', userController.getUser, (req, res) => {
-    return res.send(res.locals.retrievedUser)
+  return res.send(res.locals.retrievedUser);
 });
 
 // Change a user's info
 // http://localhost:8080/user/"name"
 userRouter.patch('/:name', userController.updateUser, (req, res) => {
-    return res.send(res.locals.updatedUser)
+  return res.send(res.locals.updatedUser);
 });
 
 // Delete a user from the database
 // http://localhost:8080/user/"name"
 userRouter.delete('/:name', userController.deleteUser, (req, res) => {
-    return res.send(JSON.stringify({message: "This user is now dead bro"}))
+  return res.send(JSON.stringify({message: 'This user is now dead bro'}));
 });
 
 
@@ -65,50 +59,59 @@ userRouter.delete('/:name', userController.deleteUser, (req, res) => {
 const restaurantRouter = express.Router();
 app.use('/api/restaurant', restaurantRouter);
 
+// Get an array of restaurants from the API
+// http://localhost:8080/restaurant/search?term=delis&latitude=37.786882&longitude=-122.399972
+// const term = req.query.term --> delis
+// const latitude = req.query.latitude --> 37.786882
+// const longitude = req.query.longitude --> -122.399972
+restaurantRouter.get('/search', restaurantController.searchApi, (req, res) => {
+  return res.send(res.locals.yelpResults);
+});
+
 // Create a restaurant in the database
 // http://localhost:8080/restaurant/
-restaurantRouter.post('/', restaurantController.createRestaurant, (req, res) => {
-    return res.send(res.locals.newRestaurant)
-});
+// restaurantRouter.post('/', restaurantController.createRestaurant, (req, res) => {
+//   return res.send(res.locals.newRestaurant);
+// });
 
 // Get all restaurants from the database
 // http://localhost:8080/restaurant/
-restaurantRouter.get('/', restaurantController.getAllRestaurants, (req, res) => {
-    return res.send(res.locals.allRetrievedRestaurants)
-});
+// restaurantRouter.get('/', restaurantController.getAllRestaurants, (req, res) => {
+//   return res.send(res.locals.allRetrievedRestaurants);
+// });
 
 // Get a specific restaurant from the database
 // http://localhost:8080/restaurant/"name"
-restaurantRouter.get('/:name', restaurantController.getRestaurant, (req, res) => {
-    return res.send(res.locals.retrievedRestaurant)
-});
+// restaurantRouter.get('/:name', restaurantController.getRestaurant, (req, res) => {
+//   return res.send(res.locals.retrievedRestaurant);
+// });
 
 // Change a restaurant's info
 // http://localhost:8080/restaurant/"name"
-restaurantRouter.patch('/:name', restaurantController.updateRestaurant, (req, res) => {
-    return res.send(res.locals.updatedRestaurant)
-});
+// restaurantRouter.patch('/:name', restaurantController.updateRestaurant, (req, res) => {
+//   return res.send(res.locals.updatedRestaurant);
+// });
 
 // Delete a restaurant from the database
 // http://localhost:8080/restaurant/"name"
-restaurantRouter.delete('/:name', restaurantController.deleteRestaurant, (req, res) => {
-    return res.send(JSON.stringify({message: "This restaurant is bankrupt bro"}))
-});
+// restaurantRouter.delete('/:name', restaurantController.deleteRestaurant, (req, res) => {
+//   return res.send(JSON.stringify({message: 'This restaurant is bankrupt bro'}));
+// });
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.status(404).send('One page at a time please, we can only code so much in three days'));
 
 app.use((err, req, res, next) => {
-    const defaultErr = {
-      log: 'Express error handler caught unknown middleware error',
-      status: 500,
-      message: { err: 'An error occurred' },
-    };
-    const errorObj = Object.assign({}, defaultErr, err);
-    console.log(errorObj.log);
-    return res.status(errorObj.status).json(errorObj.message);
-  });
+  const defaultErr = {
+    log: 'Express error handler caught unknown middleware error',
+    status: 500,
+    message: { err: 'An error occurred' },
+  };
+  const errorObj = Object.assign({}, defaultErr, err);
+  console.log(errorObj.log);
+  return res.status(errorObj.status).json(errorObj.message);
+});
 
 app.listen(port, () => {
-    console.log(`Listening on port ${port}`)
-})
+  console.log(`Listening on port ${port}`);
+});

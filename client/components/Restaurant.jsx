@@ -4,8 +4,6 @@ import * as Actions from '../actions/types.jsx';
 import { connect } from 'react-redux';
 
 
-
-
 class Restaurant extends Component {
   
   render() {
@@ -22,7 +20,6 @@ class Restaurant extends Component {
 }
 
 export default Restaurant;
-
 
 
 /*
