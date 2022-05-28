@@ -10,7 +10,7 @@ class Header extends Component {
       <div>
           Header Component
       </div>
-    ) 
+    ); 
   }
 }
 

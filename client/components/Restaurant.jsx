@@ -1,21 +1,21 @@
  
 import React, { Component } from 'react';
-import * as Actions from '../actions/types.jsx'
+import * as Actions from '../actions/types.jsx';
 import { connect } from 'react-redux';
 
- class Restaurant extends Component {
+class Restaurant extends Component {
 
   render() {
     return (
       <div>Restaurant Component</div>
     );
   }
- }
+}
 
- export default Restaurant;
+export default Restaurant;
 
 
- /*
+/*
  const mapDispatchToProps = dispatch => (
  {
    add_Rest: (restaurantId) => dispatch(Actions.addRestActionCreator(restaurantId)),

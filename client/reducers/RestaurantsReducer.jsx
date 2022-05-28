@@ -1,22 +1,22 @@
-import * as types from '../actions/types';
+import * as types from '../actions/types.jsx';
 
 
 const initialState = {
   username: 'Pink Fairy Armadillo',
-    // Buenos Aires
+  // Buenos Aires
   homeLocation: {coordinates: {
     latitude: 34.6037,
     longitude: 58.3816
-    }},
+  }},
   // Defaults to homeLocation
   searchLocation: {coordinates: {
-      latitute: 34.6037,
-      longitude: 34.6037
+    latitute: 34.6037,
+    longitude: 34.6037
   }},
   restaurantsToBeServed: [],
   cuisinePreference: '',
   // loggedIn: 'true'
-}
+};
 
 const RestaurantsReducer = (state = initialState, action) => {
   let restaurantList;
@@ -34,4 +34,4 @@ const RestaurantsReducer = (state = initialState, action) => {
 
 
 
-// export default restaurantReducer;
+export default RestaurantsReducer;
