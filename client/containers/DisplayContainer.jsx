@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import from child components...
-import Restaurant from '../components/Restaurant.jsx'
+import Restaurant from '../components/Restaurant.jsx';
 
 class DisplayContainer extends Component {
 
@@ -11,7 +11,7 @@ class DisplayContainer extends Component {
         Display Container
         <Restaurant />
       </div>
-    ) 
+    ); 
   }
 }
 
