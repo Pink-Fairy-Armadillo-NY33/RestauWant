@@ -12,6 +12,11 @@ const passport = require('passport');
 const GitHubStrategy = require('passport-github2').Strategy;
 const LoginUser = require('./models/loginUserModel');
 require('dotenv').config();
+const session = require('express-session');
+const util = require('util');
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
+const partials = require('express-partials');
 
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
@@ -23,43 +28,104 @@ mongoose.connect(MONGO_URI, {
 
 app.use(express.json());
 
+
+
+
+
+
 // OAUTH ENDPOINT
-app.use('/auth', passport.initialize());
-app.use('/auth', passport.session());
-
-app.use('/api/login', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '/login.html'));
+passport.serializeUser(function(user, done) {
+  console.log('user within serializeUser,', user);
+  done(null, user);
 });
 
-app.use('/api/secret', ensureAuthenticated, (req, res, next) => {
-  res.sendFile(path.join(__dirname, '/secret.html'));
+passport.deserializeUser(function(obj, done) {
+  console.log('user within deserializeUser,', obj);
+  done(null, obj);
 });
-
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  res.redirect('/api/login');
-}
 
 passport.use(new GitHubStrategy({
   clientID: process.env['GITHUB_CLIENT_ID'],
   clientSecret: process.env['GITHUB_CLIENT_SECRET'],
   callbackURL: '/api/auth/github/callback',
-}, function(accessToken, refreshToken, profile, done) {
+}, 
+function(accessToken, refreshToken, profile, done) {
+  // process.nextTick(function () {
+      
+  //   // To keep the example simple, the user's GitHub profile is returned to
+  //   // represent the logged-in user.  In a typical application, you would want
+  //   // to associate the GitHub account with a user record in your database,
+  //   // and return that user instead.
+  //   return done(null, profile);
+  // });
   LoginUser.findOrCreate({githubId: profile.id}, function(err, user){
-    console.log('The loginUser find or create query finished');
-    console.log('user, ', user);
+    console.log('user within findOrCreate query, ', user);
     //WE ARE HERE
     return done(err, user);
   });
 }));
 
-app.get('/api/auth/github', passport.authenticate('github'));
+app.use(partials());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(methodOverride());
+app.use('/auth', passport.initialize());
+app.use('/auth', passport.session());
+app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Credentials',true);
+  next();
+});
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+  res.header('Access-Control-Allow-Credentials',true);
+  next();
+});
+
+app.use('/api/login', (req, res, next) => {
+  res.sendFile(path.join(__dirname, '/login.html'));
+});
+
+// app.use('/api/secret', (req, res, next) => {
+//   return res.sendFile(path.join(__dirname, '/secret.html'));
+// });
+
+app.use('/api/secret', ensureAuthenticated);
+
+function ensureAuthenticated(req, res, next) {
+  console.log('req.session.passport.user', req.session.passport.user);
+  console.log('req.isAuthenticated', req.isAuthenticated());
+  if (req.isAuthenticated()) { return res.sendFile(path.join(__dirname, '/secret.html')); }
+  return res.redirect('/api/login');
+}
+
+// app.use('/api/secret', ensureAuthenticated, (req, res, next) => {
+//   return res.sendFile(path.join(__dirname, '/secret.html'));
+// });
+
+// function ensureAuthenticated(req, res, next) {
+//   if (req.isAuthenticated()) { return next(); }
+//   return res.redirect('/api/login');
+// }
+
+app.get('/api/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+
+app.get('/api/auth/github', passport.authenticate('github', { scope: [ 'user:email' ] }));
 
 app.get('/api/auth/github/callback', passport.authenticate('github', { failureRedirect: '/api/login' }),
   function(req, res) {
   // Successful authentication, redirect home.
-    res.redirect('/');
+    res.redirect('/api/secret');
   });
+
+
+
+
+
 
 // USER ENDPOINT
 // create a user router to handle all requests related to users in the database

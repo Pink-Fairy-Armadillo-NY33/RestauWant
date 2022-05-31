@@ -24,7 +24,7 @@ restaurantController.searchApi = (req, res, next) => {
       console.log('Received data back from the Yelp API');
       res.locals.yelpResults = [];
       //Iterate over the business property on the object and push the first 5 results into res.locals
-      for(let i = 0; i < 5; i++){
+      for(let i = 0; i < 30; i++){
         res.locals.yelpResults.push(data.businesses[i]);
       }
       return next();
