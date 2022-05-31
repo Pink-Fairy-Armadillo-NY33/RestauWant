@@ -1,0 +1,77 @@
+.App
+{
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: white;
+    padding: 25px 50px 50px 50px;
+    /* background-image: url("alex-haney-CAhjZmVk5H4-unsplash.jpg"); */
+}
+
+.Header
+{
+    /* background-image: url("alex-haney-CAhjZmVk5H4-unsplash.jpg"); */
+}
+
+.Display
+{
+    
+}
+
+.Restaurant
+{
+    
+}
+
+.Search
+{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: flex-start;
+    
+}
+
+.SearchContainer
+{
+  
+}
+
+.MainContainer
+{
+
+}
+
+#getRestaurantButton {
+    border-radius: 10px;
+    background-color: whitesmoke; 
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 8px;
+}
+
+#searchBar{
+    border-radius: 10px;
+
+    padding: 10px;
+}
+
+.restImage{
+    max-width: 300px;
+    height: auto;
+    
+}
+.img{
+    width: 200px;
+    height: auto;
+}
+ 
+
+
+.checkbox{
+    padding-right: 5px;
+
+}
