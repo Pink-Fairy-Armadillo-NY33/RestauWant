@@ -9,7 +9,11 @@ restaurantController.searchApi = (req, res, next) => {
   // console.log('req.query.term ', req.query.term);
   // console.log('req.query.latitude', req.query.latitude);
   // console.log('req.query.longitude', req.query.longitude);
-  const url = `https://api.yelp.com/v3/businesses/search?term=${req.query.term}&latitude=${req.query.latitude}&longitude=${req.query.longitude}`;
+
+  const url = `https://api.yelp.com/v3/businesses/search?term=${req.query.term}&latitude=${req.query.latitude}&longitude=${req.query.longitude}&location=${req.query.location}`;
+  
+
+  console.log(req.query);
   console.log('url ', url);
   //Query the yelp API using a fetch request
   fetch(url, {

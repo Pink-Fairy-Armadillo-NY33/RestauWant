@@ -8,13 +8,14 @@ class SearchContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className = "SearchContainer">
           Search Container
       </div>
     );  
   }
 }
 
+export default SearchContainer;
 
 
-export default connect(mapStateToProps, null)(SearchContainer);
+// export default connect(mapStateToProps, null)(SearchContainer);

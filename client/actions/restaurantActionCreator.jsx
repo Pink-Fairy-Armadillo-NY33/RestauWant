@@ -3,7 +3,7 @@ import * as types from './types.jsx';
 
 // Get all restaurants from the database
 // GET http://localhost:8080/api/restaurant/
-
+/*
 export const getAllRestaurants = () => {
 
   function actionCreator(dispatch) {
@@ -20,18 +20,60 @@ export const getAllRestaurants = () => {
 
   return actionCreator;
 };
-
+*/
 // Get a specific restaurant from the database
-// GET http://localhost:8080/api/restaurant/"name"
-export const getRestaurantByName = (name) => {
+// http://localhost:8080/restaurant/search?term=delis&latitude=37.786882&longitude=-122.399972
+// const term = req.query.term --> delis
+// const latitude = req.query.latitude --> 37.786882
+// const longitude = req.query.longitude --> -122.399972
+/*
+  params = {
+    term: 'delis'
+    latitude: 12
+    longitude: 10
+  }
+  params = {
+    latitude: 12
+    longitude: 10
+  }
+*/
+export const getRestaurants = (params) => {
+  console.log(params, 'this is params');
 
-  function  actionCreator (dispatch) {
-    fetch(`'/api/restaurant/${name}'`);
+  const  arr = [];
+
+  for (const key in params){
+    arr.push(`${key}=${params[key]}`);
   }
 
- 
+  const searchTerms = arr.join('&');
 
+  function actionCreator (dispatch) {
+    fetch(`/api/restaurant/search?${searchTerms}`)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        dispatch({
+          type: types.GET_RESTAURANTS,
+          payload: data,
+        });
+      });
+  }
+  return actionCreator;
 };
+
+export const setCategories = (filters) => {
+
+  function actionCreator(dispatch) {
+    dispatch({
+      type: types.SET_CATEGORIES,
+      payload: filters,
+    });
+  }
+
+  return actionCreator;
+};
+
 
 // behind the scenes
 /*
