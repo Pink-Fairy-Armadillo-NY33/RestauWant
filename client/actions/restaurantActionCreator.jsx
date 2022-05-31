@@ -62,12 +62,12 @@ export const getRestaurants = (params) => {
   return actionCreator;
 };
 
-export const setCategories = (filters) => {
+export const setCategories = (name, checked) => {
 
   function actionCreator(dispatch) {
     dispatch({
       type: types.SET_CATEGORIES,
-      payload: filters,
+      payload: {name: name, checked: checked},
     });
   }
 

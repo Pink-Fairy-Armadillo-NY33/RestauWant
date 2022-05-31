@@ -9,8 +9,17 @@ restaurantController.searchApi = (req, res, next) => {
   // console.log('req.query.term ', req.query.term);
   // console.log('req.query.latitude', req.query.latitude);
   // console.log('req.query.longitude', req.query.longitude);
+  // react --> http;//localhost:8080/api/restuarants/OUrParmeters
+  // here: inserting the params into yelp API: api.yelo.com/ourparameter
+  const arr = [];
+  const params = req.query;
+  for (const key in params){
+    arr.push(`${key}=${params[key]}`);
+  }
 
-  const url = `https://api.yelp.com/v3/businesses/search?term=${req.query.term}&latitude=${req.query.latitude}&longitude=${req.query.longitude}&location=${req.query.location}`;
+  const searchTerms = arr.join('&');
+  
+  const url = `https://api.yelp.com/v3/businesses/search?${searchTerms}`;
   
 
   console.log(req.query);
@@ -28,9 +37,16 @@ restaurantController.searchApi = (req, res, next) => {
       console.log('Received data back from the Yelp API');
       res.locals.yelpResults = [];
       //Iterate over the business property on the object and push the first 5 results into res.locals
+      let i = 0;
+      while(data.businesses[i]){
+        res.locals.yelpResults.push(data.businesses[i]);
+        i++;
+      }
+      /*
       for(let i = 0; i < 30; i++){
         res.locals.yelpResults.push(data.businesses[i]);
       }
+      */
       return next();
     });  
 };

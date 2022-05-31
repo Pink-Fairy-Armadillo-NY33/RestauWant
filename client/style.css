@@ -1,13 +1,14 @@
 .App
 {
-font-family: Helvetica, Arial, sans-serif;
-background-color: white;
-margin: 25px 50px 50px 50px;
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: white;
+    padding: 25px 50px 50px 50px;
+    /* background-image: url("alex-haney-CAhjZmVk5H4-unsplash.jpg"); */
 }
 
 .Header
 {
-
+    /* background-image: url("alex-haney-CAhjZmVk5H4-unsplash.jpg"); */
 }
 
 .Display
@@ -22,9 +23,11 @@ margin: 25px 50px 50px 50px;
 
 .Search
 {
-    
+    padding-top: 5px;
+    padding-bottom: 5px;
     display: flex;
-
+    justify-content: flex-start;
+    
 }
 
 .SearchContainer
@@ -47,21 +50,28 @@ margin: 25px 50px 50px 50px;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    margin-left: 8px;
 }
 
 #searchBar{
     border-radius: 10px;
+
     padding: 10px;
 }
 
 .restImage{
-    max-width: 50%;
+    max-width: 300px;
     height: auto;
     
 }
+.img{
+    width: 200px;
+    height: auto;
+}
+ 
 
 
 .checkbox{
-    padding-right: 10px;
+    padding-right: 5px;
 
 }

@@ -49,7 +49,9 @@ class MainContainer extends Component {
         <div></div>
         Latitude: {this.props.users.latitude}
         <Search />
-        { filters }
+        <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+          { filters }
+        </ul>
         <DisplayContainer />
       </div>
     ); 

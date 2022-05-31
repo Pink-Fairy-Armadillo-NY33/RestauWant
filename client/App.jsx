@@ -9,7 +9,7 @@ import './style.css';
 
 ReactDOM.render(
   <div className="App">
-    App here
+    <h1>RestauWant</h1>
     <Provider store={store}>
       <Header />
       <MainContainer />
@@ -19,4 +19,3 @@ ReactDOM.render(
 );
 
 
-// do we need to export default App;?

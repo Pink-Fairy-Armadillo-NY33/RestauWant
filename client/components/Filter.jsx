@@ -13,16 +13,15 @@ class Filter extends Component {
   }
 
   onCheckboxChange(event) {
-    console.log(event.target.name);
-    console.log(event.target.checked);
+    this.props.setCategories(event.target.name, event.target.checked);
   }
 
   render() {
     return (
-      <div className="ui checkbox">
+      <li className="ui checkbox" style={{ display: 'inline-block', width: '33.3333%'}}>
         <input type="checkbox" name={this.props.category} onChange={ this.onCheckboxChange } checked={this.props.value}/>
         <label htmlFor={this.props.category}>{this.props.category}</label>
-      </div>
+      </li>
     );
   }
 }

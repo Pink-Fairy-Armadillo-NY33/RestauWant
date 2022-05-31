@@ -28,12 +28,20 @@ mongoose.connect(MONGO_URI, {
 
 app.use(express.json());
 
+app.use(partials());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(methodOverride());
+app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+app.use('/auth', passport.initialize());
+app.use('/auth', passport.session());
 
 
 
 
 
 // OAUTH ENDPOINT
+/*
 passport.serializeUser(function(user, done) {
   console.log('user within serializeUser,', user);
   done(null, user);
@@ -42,6 +50,20 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(obj, done) {
   console.log('user within deserializeUser,', obj);
   done(null, obj);
+});
+*/
+
+
+passport.serializeUser(function(user, done) {
+  console.log('user within serializeUser,', user.id);
+  done(null, user.githubId);
+});
+
+passport.deserializeUser(async function(id, done) {
+  console.log('user within deserializeUser,', id);
+  const user = await LoginUser.findById(id);
+  console.log("please fking work");
+  done(null, user);
 });
 
 passport.use(new GitHubStrategy({
@@ -65,13 +87,7 @@ function(accessToken, refreshToken, profile, done) {
   });
 }));
 
-app.use(partials());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(methodOverride());
-app.use('/auth', passport.initialize());
-app.use('/auth', passport.session());
-app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.header('Access-Control-Allow-Credentials',true);
@@ -95,10 +111,12 @@ app.use('/api/secret', ensureAuthenticated);
 
 function ensureAuthenticated(req, res, next) {
   console.log('req.session.passport.user', req.session.passport.user);
-  console.log('req.isAuthenticated', req.isAuthenticated());
-  if (req.isAuthenticated()) { return res.sendFile(path.join(__dirname, '/secret.html')); }
+  console.log('req.isAuthenticated', req.user);
+  //if (req.isAuthenticated()) { return res.sendFile(path.join(__dirname, '/secret.html')); }
   return res.redirect('/api/login');
 }
+
+
 
 // app.use('/api/secret', ensureAuthenticated, (req, res, next) => {
 //   return res.sendFile(path.join(__dirname, '/secret.html'));

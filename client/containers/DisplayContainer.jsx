@@ -19,13 +19,13 @@ class DisplayContainer extends Component {
      
     for (let i = 0; i < restaurants.length; i++) {
       const { id, name, price, rating, location, image_url} = restaurants[i];
-      restaurantsArr.push(<Restaurant key={id} imgUrl={image_url} name={name} address={location.display_address} price={price} rating={rating} />);
+      restaurantsArr.push(<Restaurant imgUrl={image_url} name={name} address={location.display_address} price={price} rating={rating} />);
     }
     
 
     return (
-      <div className="Display">
-        Display Container
+      <div className="Display" style={{margin: '20px'}}>
+        <h1>Restaurants</h1>
         {restaurantsArr}
       </div>
     ); 

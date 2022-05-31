@@ -8,9 +8,14 @@ class Restaurant extends Component {
   
   render() {
     return (
-      <div>
-        <div className="Restaurant">Restaurant Component</div>
-        <div className="restImage"><img src={this.props.imgUrl} alt=""/></div>
+      <div className="restaurant" style={{ border: '1px solid black', padding: '10px', margin: '10px'}}>
+        <div className="restImage">
+          <img 
+            src={this.props.imgUrl} 
+            alt=""
+            style={{width: '100px', height: 'auto'}}
+          />
+        </div>
         <div>Restaurant Name: {this.props.name}</div>
         <div>Address:</div>
         <div>{this.props.address.join(' ')}</div>
