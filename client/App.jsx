@@ -5,11 +5,11 @@ import Header from './components/Header.jsx';
 
 import store from '../client/store.jsx';
 import { Provider } from 'react-redux';
-
+import './style.css';
 
 ReactDOM.render(
-  <div>
-    Something here
+  <div className="App">
+    App here
     <Provider store={store}>
       <Header />
       <MainContainer />

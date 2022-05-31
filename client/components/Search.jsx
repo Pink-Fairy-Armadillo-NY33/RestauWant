@@ -9,45 +9,46 @@ import * as actions from '../actions/restaurantActionCreator.jsx';
 
 const mapDispatchToProps = dispatch => ({
   // add action creators
-  getRestaurants: (params) => dispatch(actions.getRestaurants)
-
+  getRestaurants: (params) => {
+    dispatch(actions.getRestaurants(params));
+  } 
 });
 
 
-
 class Search extends Component {
-  constructor() {
-    super();
-    this.state = {params: ''};
+  constructor(props) {
+    super(props);
+    // searching by just zip for now
+    this.state = {
+      location: ''
+    };
     this.search = this.search.bind(this);
   }
 
   search(event) {
-    this.setState({params: event.target.value});
+    this.setState({location: event.target.value});
   }
 
   render() {
 
-    //   return (
-    //     <div></div>
-    //   );
-    // }
-    
     return (
-      <div>
-        Search Component
+      <div className = "Search">
+        {/* Search Component */}
         <input 
           type="text"
           id="searchBar"
-          placeholder="What do you want to eat?"
-          value={this.state.params} 
+          placeholder="Where are you?"
+          // location (zip) search box
+          value={this.state.location} 
           onChange={this.search}
         >
         </input>
         <br></br><br></br>
-        <button 
-          id="getRestaurantButton" 
-          onClick={() => this.props.getRestaurants(this.state.params)}
+        <button id="getRestaurantButton" 
+          onClick={() => {
+            this.props.getRestaurants(this.state);
+          }
+          }
         >find eats!
         </button> 
 

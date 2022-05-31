@@ -8,7 +8,7 @@ class SearchContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className = "SearchContainer">
           Search Container
       </div>
     );  

@@ -38,6 +38,7 @@ export const getAllRestaurants = () => {
   }
 */
 export const getRestaurants = (params) => {
+  console.log(params, 'this is params');
 
   const  arr = [];
 
@@ -51,6 +52,7 @@ export const getRestaurants = (params) => {
     fetch(`/api/restaurant/search?${searchTerms}`)
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         dispatch({
           type: types.GET_RESTAURANTS,
           payload: data,
@@ -58,8 +60,20 @@ export const getRestaurants = (params) => {
       });
   }
   return actionCreator;
-
 };
+
+export const setCategories = (filters) => {
+
+  function actionCreator(dispatch) {
+    dispatch({
+      type: types.SET_CATEGORIES,
+      payload: filters,
+    });
+  }
+
+  return actionCreator;
+};
+
 
 // behind the scenes
 /*

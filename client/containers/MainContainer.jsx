@@ -27,18 +27,29 @@ class MainContainer extends Component {
 
     coordPromise.then( coords => {
       this.props.getUserLocation(coords.userLat, coords.userLong);
+      // this.props.getRestaurants( { location: 10013 });
       this.props.getRestaurants({ latitude: coords.userLat, longitude: coords.userLong});
     });
 
   }
 
   render() {
+    const filters = [];
+    const categories = this.props.restaurants.categories;
+
+    for (const [key, value] of Object.entries(categories)) {
+      filters.push(
+        <Filter key={key} category={key} checked={value} />
+      );
+    }
+
     return (
-      <div> 
-        Longitude: {this.props.users.longitude}
+      <div className = "MainContainer"> 
+        Longitude: {this.props.users.longitude} 
+        <div></div>
         Latitude: {this.props.users.latitude}
         <Search />
-        <Filter />
+        { filters }
         <DisplayContainer />
       </div>
     ); 
