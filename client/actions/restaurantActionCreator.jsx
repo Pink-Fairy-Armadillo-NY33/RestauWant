@@ -49,6 +49,7 @@ export const getRestaurants = (params) => {
   const searchTerms = arr.join('&');
 
   function actionCreator (dispatch) {
+    // e.g. Fetch request to: http://localhost:8080/api/restaurant/search?location=92807
     fetch(`/api/restaurant/search?${searchTerms}`)
       .then(res => res.json())
       .then(data => {
