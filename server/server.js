@@ -1,16 +1,18 @@
 const express = require('express');
 const session = require('express-session');
-const cors = require('cors');
+//const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
+const app = express();
+const path = require('path');
+const userController = require('./controllers/userController.js');
 
-const MONGO_URI = 'mongodb+srv://project:scratchproject@cluster0.an6pg.mongodb.net/?retryWrites=true&w=majority';
-mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, dbName: 'ResturantDb' });
+const MONGO_URI = 'mongodb+srv://harrygandalf:clearskysmongo@cluster0.kwayq.mongodb.net/test?retryWrites=true&w=majority';
+//const MONGO_URI = 'mongodb+srv://project:scratchproject@cluster0.an6pg.mongodb.net/?retryWrites=true&w=majority';
+mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, dbName: 'restauwant' });
 mongoose.connection.once('open', () => {
   console.log('Connected to Mongo DB.');
 }); 
-
-const app = express();
 
 app.use(session({ secret: 'cats'}));
 app.use(passport.initialize());
@@ -18,7 +20,7 @@ app.use(passport.session());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+// app.use(cors());
 
 const userRouter = require('./routers/userRouter');
 const restaurantRouter = require('./routers/restaurantRouter');

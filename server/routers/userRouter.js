@@ -2,6 +2,8 @@ const express = require('express');
 const userController = require('../controllers/userController');
 const router = express.Router();
 
+
+
 // Create a user in the database
 // http://localhost:8080/user/
 router.post('/', userController.createUser, (req, res) => {
