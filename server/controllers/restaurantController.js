@@ -1,3 +1,4 @@
+const Restaurant = require('../models/restaurantModel');
 const fetch = require('node-fetch');
 
 const restaurantController = {};
