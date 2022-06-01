@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll", 
+    "test": "jest --watchAll",
     "server": "nodemon ./server/server.js",
     "build": "webpack --mode=production",
     "client": "webpack serve --mode=development",
@@ -58,6 +58,7 @@
     "eslint-plugin-react": "^7.30.0",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^28.1.0",
+    "node-mocks-http": "^1.11.0",
     "node-sass": "^7.0.1",
     "react-test-renderer": "^18.1.0",
     "sass-loader": "^13.0.0",

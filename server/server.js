@@ -6,7 +6,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 const userController = require('./controllers/userController');
 const restaurantController = require('./controllers/restaurantController');
-const MONGO_URI = 'mongodb+srv://project:scratchproject@cluster0.an6pg.mongodb.net/?retryWrites=true&w=majority';
+// Updated database to our own MongoDB database Catsnake LLC
+const MONGO_URI = 'mongodb+srv://admin:admin@cluster0.tuf6p.mongodb.net/?retryWrites=true&w=majority';
 
 const passport = require('passport');
 const GitHubStrategy = require('passport-github2').Strategy;
@@ -116,8 +117,6 @@ function ensureAuthenticated(req, res, next) {
   return res.redirect('/api/login');
 }
 
-
-
 // app.use('/api/secret', ensureAuthenticated, (req, res, next) => {
 //   return res.sendFile(path.join(__dirname, '/secret.html'));
 // });
@@ -139,11 +138,6 @@ app.get('/api/auth/github/callback', passport.authenticate('github', { failureRe
     // Successful authentication, redirect home.
     res.redirect('/api/secret');
   });
-
-
-
-
-
 
 // USER ENDPOINT
 // create a user router to handle all requests related to users in the database
