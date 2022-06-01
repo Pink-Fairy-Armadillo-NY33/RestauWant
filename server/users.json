@@ -1,0 +1,10 @@
+{
+    "name": "Adam",
+    "userName": "AdamR",
+    "password": "asd",
+    "pastResturants": "Rays Pizza",
+    "location": {
+        "lat": -74.0645171,
+        "long": 40.7220372
+    }
+}

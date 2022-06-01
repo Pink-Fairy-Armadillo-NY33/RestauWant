@@ -9,7 +9,7 @@ restaurantController.searchApi = (req, res, next) => {
   // console.log('req.query.term ', req.query.term);
   // console.log('req.query.latitude', req.query.latitude);
   // console.log('req.query.longitude', req.query.longitude);
-  // react --> http;//localhost:8080/api/restuarants/OUrParmeters
+  // react --> http;//localhost:8080/api/restuarants/OUrParameters
   // here: inserting the params into yelp API: api.yelo.com/ourparameter
   const arr = [];
   const params = req.query;
