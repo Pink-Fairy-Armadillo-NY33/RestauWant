@@ -1,9 +1,15 @@
 const fetch = require('node-fetch');
-
 const restaurantController = {};
+
+
 
 restaurantController.searchApi = (req, res, next) => {
   console.log('Entered the searchApi method within restaurantController');
+  // console.log('req.query.term ', req.query.term);
+  // console.log('req.query.latitude', req.query.latitude);
+  // console.log('req.query.longitude', req.query.longitude);
+  // react --> http;//localhost:8080/api/restuarants/OUrParameters
+  // here: inserting the params into yelp API: api.yelo.com/ourparameter
   const arr = [];
   // getting parameters from GET request
   const params = req.query;
