@@ -62,7 +62,7 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(async function(id, done) {
   console.log('user within deserializeUser,', id);
   const user = await LoginUser.findById(id);
-  console.log("please fking work");
+  console.log('please fking work');
   done(null, user);
 });
 
@@ -130,6 +130,11 @@ function ensureAuthenticated(req, res, next) {
 app.get('/api/logout', function(req, res){
   req.logout();
   res.redirect('/');
+});
+
+app.get('/api/signup',(req, res)=>{
+  console.log('hi');
+  res.send('hi');
 });
 
 app.get('/api/auth/github', passport.authenticate('github', { scope: [ 'user:email' ] }));

@@ -37,21 +37,47 @@
     padding: 5px;
 }
 
-.btn-group button {
-    border: 1px solid black;
+.btn-group .btn {
+    border: 2px solid black;
     border-radius: 8px;
     padding: 0.5em 1.5em;
     font-size: 0.75rem;
     font-weight: 700;
-    background-color: #0003ba;
+    background-color: rgb(175, 19, 214);
     color: whitesmoke;
     margin: .3em 0em;
 }
 
 .btn-group .signup-btn {
-    background-color: rgba(0, 0, 0, 0);
-    border: 2px solid #0003ba;
-    color: #0003ba;
+    background-color: white;
+    border: 2px solid rgb(175, 19, 214);
+    color: rgb(175, 19, 214);
+    /* BLUE: #0003ba; */
+}
+
+.login-btn {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    text-decoration: none;
+}
+
+.login-btn:hover {
+    background-color: whitesmoke;
+    color: rgb(175, 19, 214);
+    transition: 0.3s ease;
+}
+
+.signup-btn {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    text-decoration: none;
+}
+
+.signup-btn:hover {
+    border: 2px solid black;
+    color: whitesmoke;
+    background-color: rgb(175, 19, 214);
+    transition: 0.3s ease;
 }
 
 button:hover {
@@ -68,15 +94,16 @@ button:hover {
 .Display {
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 }
 
 .filters-container {
     display: flex;
-    gap: 10px;
-    max-width: 100vw;
+    gap: 20px;
+    padding: 0px 25px;
+    background-color: red;
     font-size: 0.8rem;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     overflow-x: scroll;
 }

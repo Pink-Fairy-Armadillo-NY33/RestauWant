@@ -18,12 +18,12 @@ class Header extends Component {
           RestauWant
         </a>
         <div className='btn-group'>
-          <Link to='/LogIn'>
-            <button className='login-btn btn'>Log In</button>
-
-            {/* <Link to='/login'>Log IN</Link> */}
+          <Link className="login-btn btn" to='/login'>
+            Log In
           </Link>
-          <button className='signup-btn btn'>Sign Up</button>
+          <Link className="signup-btn btn" to='/signup'>
+            Sign Up
+          </Link>
         </div>
       </div>
     );

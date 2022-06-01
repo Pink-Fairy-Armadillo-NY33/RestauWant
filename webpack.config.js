@@ -27,7 +27,7 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new ESLintPlugin({
-      extensions: [`js`, `jsx`],
+      extensions: ['js', 'jsx'],
       exclude: 'node_modules',
     }),
   ],
