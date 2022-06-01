@@ -19,7 +19,7 @@ class DisplayContainer extends Component {
      
     for (let i = 0; i < restaurants.length; i++) {
       const { id, name, price, rating, location, image_url} = restaurants[i];
-      restaurantsArr.push(<Restaurant imgUrl={image_url} name={name} address={location.display_address} price={price} rating={rating} />);
+      restaurantsArr.push(<Restaurant imgUrl={image_url} name={name} address={location.display_address} price={price} rating={rating} key={i}/>);
     }
     
 
