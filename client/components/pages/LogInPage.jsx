@@ -5,14 +5,17 @@ import React, { useState, useEffect } from 'react';
 function LogIn(props) {
   return (
     <div className='logback'>
-
       <div className='logbox'>
-        <h1>Log in Here</h1>
+        <h2>Please Log in below </h2>
 
-        <button>
-          < img src="https://colorlib.com/etc/lf/Login_v5/images/icons/icon-google.png" alt="GOOGLE" /> Google
+        <button className='googleAuth-btn'>
+          <img
+            src='https://colorlib.com/etc/lf/Login_v5/images/icons/icon-google.png'
+            alt='GOOGLE'
+          />
+          oogle
         </button>
-
+        <div className='or'>OR</div>
 
         <div className=''>
           <input
@@ -35,14 +38,13 @@ function LogIn(props) {
             required
           />
         </div>
-        <div className=''>
-          <input
-            value='Log In'
-            className=''
-            type='button'
-            // onClick={props.helperFunc}
-          />
-        </div>
+
+        <input
+          value='Log In'
+          className='logbtn'
+          type='button'
+          // onClick={props.helperFunc}
+        />
       </div>
     </div>
   );

@@ -4,9 +4,19 @@ import React, { useState, useEffect } from 'react';
 
 function SignUp(props) {
   return (
-    <div className=''>
-      <h1>Sign Up </h1>
-      <div>
+    <div className='logback'>
+      <div className='signbox'>
+        <h2>Sign Up </h2>
+        <div className=''>
+          <input
+            className=''
+            placeholder='Name'
+            type='text'
+            id='fullName'
+            name='fullName'
+            required
+          />
+        </div>
         <div className=''>
           <input
             className=''
@@ -16,7 +26,16 @@ function SignUp(props) {
             name='Username'
             required
           />
-
+        </div>
+        <div className=''>
+          <input
+            className=''
+            placeholder='email'
+            type='email'
+            id='email'
+            name='email'
+            required
+          />
         </div>
 
         <div className=''>
@@ -28,11 +47,10 @@ function SignUp(props) {
             name='password'
             required
           />
-        
         </div>
         <div className=''>
           <input
-            value='Log In'
+            value='Sign Up!'
             className=''
             type='button'
             // onClick={props.helperFunc}
