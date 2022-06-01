@@ -1,0 +1,12 @@
+dependencies:
+"@testing-library/jest-dom": "^5.15.0",
+
+"@testing-library/react": "^12.1.2",
+"@testing-library/user-event": "^13.5.0",
+
+"react-test-utils": "^0.0.1",
+
+dev dependencies:
+"@babel/plugin-transform-runtime": "^7.1.0",
+"babel-jest": "^23.6.0",
+"react-test-renderer": "^17.0.2",
