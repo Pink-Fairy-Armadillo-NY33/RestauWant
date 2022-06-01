@@ -5,6 +5,7 @@ const MONGO_URI = 'mongodb+srv://harrygandalf:clearskysmongo@cluster0.kwayq.mong
 const userSchema = new Schema({
   name: {type: String},
   userName: {type: String},
+  email: {type: String},
   password: {type: String},
   profilePicture: {type: String},
   pastResturants: [{type: String}],
