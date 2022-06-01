@@ -25,7 +25,7 @@ class DisplayContainer extends Component {
 
     return (
       <>
-        <h1>Restaurants</h1>
+        <h1 className="restaurants-title">Restaurants</h1>
         <div className="Display">
           {restaurantsArr}
         </div>
