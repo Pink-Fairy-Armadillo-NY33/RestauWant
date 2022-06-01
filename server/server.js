@@ -54,12 +54,12 @@ passport.deserializeUser(function(obj, done) {
 */
 
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   console.log('user within serializeUser,', user.id);
   done(null, user.githubId);
 });
 
-passport.deserializeUser(async function(id, done) {
+passport.deserializeUser(async function (id, done) {
   console.log('user within deserializeUser,', id);
   const user = await LoginUser.findById(id);
   console.log("please fking work");
@@ -70,32 +70,32 @@ passport.use(new GitHubStrategy({
   clientID: process.env['GITHUB_CLIENT_ID'],
   clientSecret: process.env['GITHUB_CLIENT_SECRET'],
   callbackURL: '/api/auth/github/callback',
-}, 
-function(accessToken, refreshToken, profile, done) {
-  // process.nextTick(function () {
-      
-  //   // To keep the example simple, the user's GitHub profile is returned to
-  //   // represent the logged-in user.  In a typical application, you would want
-  //   // to associate the GitHub account with a user record in your database,
-  //   // and return that user instead.
-  //   return done(null, profile);
-  // });
-  LoginUser.findOrCreate({githubId: profile.id}, function(err, user){
-    console.log('user within findOrCreate query, ', user);
-    //WE ARE HERE
-    return done(err, user);
-  });
-}));
+},
+  function (accessToken, refreshToken, profile, done) {
+    // process.nextTick(function () {
+
+    //   // To keep the example simple, the user's GitHub profile is returned to
+    //   // represent the logged-in user.  In a typical application, you would want
+    //   // to associate the GitHub account with a user record in your database,
+    //   // and return that user instead.
+    //   return done(null, profile);
+    // });
+    LoginUser.findOrCreate({ githubId: profile.id }, function (err, user) {
+      console.log('user within findOrCreate query, ', user);
+      //WE ARE HERE
+      return done(err, user);
+    });
+  }));
 
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.header('Access-Control-Allow-Credentials',true);
+  res.header('Access-Control-Allow-Credentials', true);
   next();
 });
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
-  res.header('Access-Control-Allow-Credentials',true);
+  res.header('Access-Control-Allow-Credentials', true);
   next();
 });
 
@@ -127,16 +127,16 @@ function ensureAuthenticated(req, res, next) {
 //   return res.redirect('/api/login');
 // }
 
-app.get('/api/logout', function(req, res){
+app.get('/api/logout', function (req, res) {
   req.logout();
   res.redirect('/');
 });
 
-app.get('/api/auth/github', passport.authenticate('github', { scope: [ 'user:email' ] }));
+app.get('/api/auth/github', passport.authenticate('github', { scope: ['user:email'] }));
 
 app.get('/api/auth/github/callback', passport.authenticate('github', { failureRedirect: '/api/login' }),
-  function(req, res) {
-  // Successful authentication, redirect home.
+  function (req, res) {
+    // Successful authentication, redirect home.
     res.redirect('/api/secret');
   });
 
@@ -177,7 +177,7 @@ userRouter.patch('/:name', userController.updateUser, (req, res) => {
 // Delete a user from the database
 // http://localhost:8080/user/"name"
 userRouter.delete('/:name', userController.deleteUser, (req, res) => {
-  return res.send(JSON.stringify({message: 'This user is now dead bro'}));
+  return res.send(JSON.stringify({ message: 'This user is now dead bro' }));
 });
 
 
