@@ -5,7 +5,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: path.resolve(__dirname, './client/App.jsx'),
+    main: path.resolve(__dirname, './client/Index.jsx'),
   },
   output: {
     path: path.resolve(__dirname, './build'),
@@ -18,7 +18,7 @@ module.exports = {
     },
     port: 3000,
     proxy: {
-      '/api': {
+      '*': {
         target: 'http://localhost:3000',
         router: () => 'http://localhost:8080',
         logLevel: 'debug',
@@ -31,7 +31,7 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new ESLintPlugin({
-      extensions: [`js`, `jsx`],
+      extensions: ['js', 'jsx'],
       exclude: 'node_modules',
     }),
   ],
