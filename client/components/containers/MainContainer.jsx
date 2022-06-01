@@ -35,7 +35,7 @@ class MainContainer extends Component {
     const categories = this.props.restaurants.categories;
 
     for (const [key, value] of Object.entries(categories)) {
-      filters.push(<Filter key={key} category={key} checked={value} />);
+      filters.push(<Filter className="filter" key={key} category={key} checked={value} />);
     }
 
     return (

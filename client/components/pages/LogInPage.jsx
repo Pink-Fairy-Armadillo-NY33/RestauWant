@@ -4,10 +4,16 @@ import React, { useState, useEffect } from 'react';
 
 function LogIn(props) {
   return (
-    <div className=''>
-      <h1>Sign In </h1>
+    <div className='logback'>
 
-      <form>
+      <div className='logbox'>
+        <h1>Log in Here</h1>
+
+        <button>
+          < img src="https://colorlib.com/etc/lf/Login_v5/images/icons/icon-google.png" alt="GOOGLE" /> Google
+        </button>
+
+
         <div className=''>
           <input
             className=''
@@ -17,7 +23,6 @@ function LogIn(props) {
             name='Username'
             required
           />
-          <label htmlFor='Username'>Username </label>
         </div>
 
         <div className=''>
@@ -29,7 +34,6 @@ function LogIn(props) {
             name='password'
             required
           />
-          <label htmlFor='password'>Password </label>
         </div>
         <div className=''>
           <input
@@ -39,7 +43,7 @@ function LogIn(props) {
             // onClick={props.helperFunc}
           />
         </div>
-      </form>
+      </div>
     </div>
   );
 }
