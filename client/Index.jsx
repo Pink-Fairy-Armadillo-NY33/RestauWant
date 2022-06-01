@@ -1,21 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 // import MainContainer from './components/containers/MainContainer.jsx';
-import App from './components/App.jsx';
-import Header from './components/layout/Header.jsx';
-import { BrowserRouter as Router } from 'react-router-dom';
+import App from './App.jsx';
+// import Header from './components/layout/Header.jsx';
 import store from './store.jsx';
 import { Provider } from 'react-redux';
 import './style.css';
 
-ReactDOM.render(
-  <div className='App'>
-    <Provider store={store}>
-      <Header />
-      <Router>
-        <App />
-      </Router>
-    </Provider>
-  </div>,
-  document.querySelector('#root')
+//Before
+// ReactDOM.render(
+//   <div className='App'>
+//     <Provider store={store}>
+//       <Header />
+//       <App />
+//     </Provider>
+//   </div>,
+//   document.querySelector('#root')
+// );
+
+// After
+const container = document.getElementById('App');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+  // <App />
 );
