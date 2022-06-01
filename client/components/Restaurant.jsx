@@ -8,12 +8,12 @@ class Restaurant extends Component {
   
   render() {
     return (
-      <div className="restaurant" style={{ border: '1px solid black', padding: '10px', margin: '10px'}}>
+      <div className="restaurant">
         <div className="restImage">
           <img 
             src={this.props.imgUrl} 
             alt=""
-            style={{width: '100px', height: 'auto'}}
+            style={{width: '100%', maxHeight: '200px'}}
           />
         </div>
         <div>Restaurant Name: {this.props.name}</div>
