@@ -1,36 +1,29 @@
-const Restaurant = require('../models/restaurantModel');
 const fetch = require('node-fetch');
 
 const restaurantController = {};
 
-//Asynchronous put request to the database which returns the new Restaurant document
 restaurantController.searchApi = (req, res, next) => {
   console.log('Entered the searchApi method within restaurantController');
-  // console.log('req.query.term ', req.query.term);
-  // console.log('req.query.latitude', req.query.latitude);
-  // console.log('req.query.longitude', req.query.longitude);
-  // react --> http;//localhost:8080/api/restuarants/OUrParmeters
-  // here: inserting the params into yelp API: api.yelo.com/ourparameter
   const arr = [];
+  // getting parameters from GET request
   const params = req.query;
-  for (const key in params){
+  for (const key in params) {
     arr.push(`${key}=${params[key]}`);
   }
 
   const searchTerms = arr.join('&');
-  
+
   const url = `https://api.yelp.com/v3/businesses/search?${searchTerms}`;
-  
 
   console.log(req.query);
   console.log('url ', url);
   //Query the yelp API using a fetch request
   fetch(url, {
     headers: {
-      'Authorization': 'Bearer tDSCrb4Pqxqnh_b7UQ_XTWjmuBww3FMpQSTkqTEkR67zcr2xAFSZl9Pa-WDNGCRQ-HB2CzuxtYgFjIYLuCt_QXGO1aLtCgawaCuyRJ_TTyQOI2srIAE0-mQUajmSYnYx'
-    }
+      Authorization:
+        'Bearer FFhJs96QD1eSN8ptuyp9XrdevQvOjAWTZNR0Dt9DJyIOSzN4jKHKS-iGUZgEhGz1TEcILovZ-bTlQ3HZe0RCJBc8eLni1uFlUQapPMpLQFqrF1hsl4qDPc8dnKyWYnYx',
+    },
   })
-
     // Parse the returned data into a JS object
     .then((rawData) => rawData.json())
     .then((data) => {
@@ -38,17 +31,12 @@ restaurantController.searchApi = (req, res, next) => {
       res.locals.yelpResults = [];
       //Iterate over the business property on the object and push the first 5 results into res.locals
       let i = 0;
-      while(data.businesses[i]){
+      while (data.businesses[i]) {
         res.locals.yelpResults.push(data.businesses[i]);
         i++;
       }
-      /*
-      for(let i = 0; i < 30; i++){
-        res.locals.yelpResults.push(data.businesses[i]);
-      }
-      */
       return next();
-    });  
+    });
 };
 
 //TO WHOMEVER IT MAY CONCERN (MEANING ITERATION GROUP), YOU PROBABLY WANT TO ADD TRY CATCH BLOCKS HERE
@@ -70,7 +58,9 @@ restaurantController.getAllRestaurants = async (req, res, next) => {
 
 //Asynchronous get request to the database which returns a Restaurant document based on name
 restaurantController.getRestaurant = async (req, res, next) => {
-  const retrievedRestaurant = await Restaurant.findOne({name: req.params.name});
+  const retrievedRestaurant = await Restaurant.findOne({
+    name: req.params.name,
+  });
   console.log('retrievedRestaurant ', retrievedRestaurant);
   res.locals.retrievedRestaurant = retrievedRestaurant;
   return next();
@@ -78,7 +68,10 @@ restaurantController.getRestaurant = async (req, res, next) => {
 
 //Asynchronous patch request to the database which updates and returns a Restaurant document based on name
 restaurantController.updateRestaurant = async (req, res, next) => {
-  const updatedRestaurant = await Restaurant.findOneAndUpdate({name: req.params.name}, req.body); 
+  const updatedRestaurant = await Restaurant.findOneAndUpdate(
+    { name: req.params.name },
+    req.body
+  );
   console.log('updatedRestaurant ', updatedRestaurant);
   res.locals.updatedRestaurant = updatedRestaurant;
   return next();
@@ -86,10 +79,12 @@ restaurantController.updateRestaurant = async (req, res, next) => {
 
 //Asynchronous delete request to the database which deletes a Restaurant document based on name
 restaurantController.deleteRestaurant = async (req, res, next) => {
-  const deletedRestaurant = await Restaurant.deleteOne({name: req.params.name});
+  const deletedRestaurant = await Restaurant.deleteOne({
+    name: req.params.name,
+  });
   // console.log('deletedRestaurant ', deletedRestaurant)
-  const { acknowledged , deletedCount } = deletedRestaurant;
-  if(acknowledged === true && deletedCount === 1){
+  const { acknowledged, deletedCount } = deletedRestaurant;
+  if (acknowledged === true && deletedCount === 1) {
     return next();
   }
   return next({
@@ -97,7 +92,6 @@ restaurantController.deleteRestaurant = async (req, res, next) => {
     status: 500,
     message: { err: 'Failed to delete Restaurant' },
   });
-
 };
 
 module.exports = restaurantController;
