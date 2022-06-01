@@ -10,3 +10,6 @@ export const GET_USER = 'GET_USER';
 
 
 export const GET_USER_LOCATION = 'GET_USER_LOCATION';
+
+// checks user login status 
+export const CHECK_USER_LOGIN = 'CHECK_USER_LOGIN';

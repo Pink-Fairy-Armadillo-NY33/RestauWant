@@ -5,7 +5,7 @@ import UsersReducer from './UsersReducer.jsx';
 
 const reducers = combineReducers({
   restaurants: RestaurantsReducer,
-  users: UsersReducer
+  users: UsersReducer,
 });
 
 export default reducers;

@@ -6,7 +6,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const userController = require('./controllers/userController');
 const restaurantController = require('./controllers/restaurantController');
-const MONGO_URI = 'mongodb+srv://project:scratchproject@cluster0.an6pg.mongodb.net/?retryWrites=true&w=majority';
+const MONGO_URI = 'mongodb+srv://gar12344:Pokemon0258631@cluster0.i3sqoka.mongodb.net/?retryWrites=true&w=majority';
 
 const passport = require('passport');
 const GitHubStrategy = require('passport-github2').Strategy;
@@ -28,6 +28,8 @@ mongoose.connect(MONGO_URI, {
 
 app.use(express.json());
 
+// app.use('/', express.static(path.resolve(__dirname, '../client')));
+
 app.use(partials());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -35,9 +37,6 @@ app.use(methodOverride());
 app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
 app.use('/auth', passport.initialize());
 app.use('/auth', passport.session());
-
-
-
 
 
 // OAUTH ENDPOINT
@@ -53,7 +52,6 @@ passport.deserializeUser(function(obj, done) {
 });
 */
 
-
 passport.serializeUser(function(user, done) {
   console.log('user within serializeUser,', user.id);
   done(null, user.githubId);
@@ -62,7 +60,7 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(async function(id, done) {
   console.log('user within deserializeUser,', id);
   const user = await LoginUser.findById(id);
-  console.log("please fking work");
+  console.log('please fking work');
   done(null, user);
 });
 
@@ -90,17 +88,22 @@ function(accessToken, refreshToken, profile, done) {
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.header('Access-Control-Allow-Credentials',true);
+  res.header('Access-Control-Allow-Credentials', true);
   next();
 });
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
-  res.header('Access-Control-Allow-Credentials',true);
+  res.header('Access-Control-Allow-Credentials', true);
   next();
 });
 
+// app.get('/', (req, res) => {
+//   res.redirect('/');
+//   return;
+// });
+
 app.use('/api/login', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '/login.html'));
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
 // app.use('/api/secret', (req, res, next) => {

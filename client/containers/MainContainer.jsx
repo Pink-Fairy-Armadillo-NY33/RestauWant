@@ -7,8 +7,7 @@ import Filter from '../components/Filter.jsx';
 import * as actions from '../actions/types.jsx';
 import { getUserLocation} from '../actions/userActionCreators.jsx';
 import { getRestaurants } from '../actions/restaurantActionCreator.jsx';
-
-
+import { Link, Outlet } from 'react-router-dom';
 
 
 class MainContainer extends Component {
@@ -32,6 +31,7 @@ class MainContainer extends Component {
     });
 
   }
+  
 
   render() {
     const filters = [];
@@ -43,8 +43,16 @@ class MainContainer extends Component {
       );
     }
 
+    const isLoggedIn = false;
+
     return (
       <div className = "MainContainer"> 
+        {/* <Link id="login" to="/api/login"> Login </Link> */}
+        {/* <button id='loginButton' onClick={() => }></button> */}
+        { isLoggedIn ? <div>Welcome back, user </div> : <Link id="login" to="/api/login"> Login </Link> }
+        <br></br>
+        { isLoggedIn ? <div>Welcome back, user </div> : <Link id="sign up" to="/api/signup"> Sign Up </Link> }
+        <br></br>
         Longitude: {this.props.users.longitude} 
         <div></div>
         Latitude: {this.props.users.latitude}
@@ -53,6 +61,7 @@ class MainContainer extends Component {
           { filters }
         </ul>
         <DisplayContainer />
+        <Outlet/>
       </div>
     ); 
   }
