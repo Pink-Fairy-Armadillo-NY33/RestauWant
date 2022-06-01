@@ -240,7 +240,7 @@ app.use((err, req, res, next) => {
   return res.status(errorObj.status).json(errorObj.message);
 });
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
@@ -272,3 +272,5 @@ Accept: application/json
   "token_type":"bearer"
 }
 */
+
+module.exports = server

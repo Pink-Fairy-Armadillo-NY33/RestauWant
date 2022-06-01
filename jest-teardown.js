@@ -1,3 +1,5 @@
+import server from './server/server.js'
+
 module.exports = async (globalConfig) => {
-    testServer.close();
+    server.close();
   };
