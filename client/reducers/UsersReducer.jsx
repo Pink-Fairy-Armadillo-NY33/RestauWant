@@ -6,6 +6,7 @@ import * as types from '../actions/types.jsx';
 const initialState = {
   longitude: -122.399972,
   latitude: 37.786882,
+  isLoggedIn: false,
 };
 
 const UsersReducer = (state = initialState, action) => {
@@ -16,6 +17,7 @@ const UsersReducer = (state = initialState, action) => {
         ...state,
         longitude: action.payload.longitude,
         latitude: action.payload.latitude,
+        isLoggedIn: action.payload.isLoggedIn,
       };
 
     default:

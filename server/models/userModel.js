@@ -11,13 +11,13 @@ const userSchema = new Schema({
   },
   comments: [
     {
-        user: {type: String, required: true},
-        comment: {type: String,required: true},
-        resturant_name: {type: String, required: true} 
+      user: {type: String, required: true},
+      comment: {type: String,required: true},
+      resturant_name: {type: String, required: true} 
     }
- ]
-})
+  ]
+});
 
 
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model('User', userSchema);
