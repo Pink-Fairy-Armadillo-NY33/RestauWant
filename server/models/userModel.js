@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const MONGO_URI = 'mongodb+srv://harrygandalf:clearskysmongo@cluster0.kwayq.mongodb.net/test?retryWrites=true&w=majority';
 
 const userSchema = new Schema({
   name: {type: String},
@@ -8,14 +9,14 @@ const userSchema = new Schema({
   profilePicture: {type: String},
   pastResturants: [{type: String}],
   location: {
-    latitude: {type: Number, required: true},
-    longitude: {type: Number, required: true}
+    latitude: {type: Number, required: false},
+    longitude: {type: Number, required: false}
   },
   comments: [
     {
-      user: {type: String, required: true},
-      comment: {type: String,required: true},
-      resturant_name: {type: String, required: true} 
+      user: {type: String, required: false},
+      comment: {type: String,required: false},
+      resturant_name: {type: String, required: false} 
     }
   ]
 });

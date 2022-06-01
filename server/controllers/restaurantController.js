@@ -1,9 +1,8 @@
-const Restaurant = require('../models/restaurantModel');
 const fetch = require('node-fetch');
-
 const restaurantController = {};
 
-//Asynchronous put request to the database which returns the new Restaurant document
+
+
 restaurantController.searchApi = (req, res, next) => {
   console.log('Entered the searchApi method within restaurantController');
   // console.log('req.query.term ', req.query.term);
@@ -12,6 +11,7 @@ restaurantController.searchApi = (req, res, next) => {
   // react --> http;//localhost:8080/api/restuarants/OUrParameters
   // here: inserting the params into yelp API: api.yelo.com/ourparameter
   const arr = [];
+  // getting parameters from GET request
   const params = req.query;
   for (const key in params) {
     arr.push(`${key}=${params[key]}`);
@@ -41,11 +41,6 @@ restaurantController.searchApi = (req, res, next) => {
         res.locals.yelpResults.push(data.businesses[i]);
         i++;
       }
-      /*
-      for(let i = 0; i < 30; i++){
-        res.locals.yelpResults.push(data.businesses[i]);
-      }
-      */
       return next();
     });
 };
