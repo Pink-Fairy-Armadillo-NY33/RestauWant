@@ -26,7 +26,7 @@ const RestaurantsReducer = (state = initialState, action) => {
           }
         }
       }
-      console.log(newCategories);
+      console.log('newCategories: ', newCategories);
       console.log(restaurantsToBeDisplayed);
       return {
         ...state,

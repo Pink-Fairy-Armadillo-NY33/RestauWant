@@ -1,0 +1,23 @@
+dependencies:
+"@testing-library/jest-dom": "^5.15.0",
+
+"@testing-library/react": "^12.1.2",
+"@testing-library/user-event": "^13.5.0",
+
+"react-test-utils": "^0.0.1",
+
+
+dev dependencies:
+
+"babel-jest": "^23.6.0",
+"react-test-renderer": "^17.0.2",
+
+
+
+Changes to be worked:
+-Search component includes state, should call action based on input text and not a state property
+-Wrap app.jsx in an index.js file
+-Delete SearchContainer and Header
+-Change userReducer/actionCreator to location
+
+jest-dom @testing-library/jest-dom
