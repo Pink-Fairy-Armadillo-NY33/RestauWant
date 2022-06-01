@@ -5,21 +5,21 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: path.resolve(__dirname, './client/App.jsx')  
+    main: path.resolve(__dirname, './client/index.jsx'),
   },
   output: {
     path: path.resolve(__dirname, './build'),
-    filename: 'bundle.js', 
+    filename: 'bundle.js',
   },
   devServer: {
     static: {
       directory: path.resolve(__dirname, './build'),
       publicPath: 'bundle.js',
-    }, 
+    },
     port: 3000,
     proxy: {
       '/api/*': 'http://localhost:8080',
-    }
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -28,7 +28,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new ESLintPlugin({
       extensions: [`js`, `jsx`],
-      exclude: 'node_modules'
+      exclude: 'node_modules',
     }),
   ],
   module: {
@@ -40,9 +40,9 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env','@babel/preset-react'],
-          }
-        }
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
       },
       // Images
       {
@@ -60,5 +60,4 @@ module.exports = {
       },
     ],
   },
-
 };
