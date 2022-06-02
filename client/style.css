@@ -1,14 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Telugu&display=swap');
+
 .App
 {
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Tiro Telugu', serif;
     background-color: white;
     padding: 25px 50px 50px 50px;
     /* background-image: url("alex-haney-CAhjZmVk5H4-unsplash.jpg"); */
+    background: url(file:///Users/garrettlayden/Desktop/Screen%20Shot%202022-06-02%20at%2010.39.10%20AM.png) no-repeat top right
 }
 
 .Header
 {
     /* background-image: url("alex-haney-CAhjZmVk5H4-unsplash.jpg"); */
+}
+
+#profilePicture {
+	width: 10%;
+	border-radius: 10em;
 }
 
 .Display
@@ -39,7 +47,7 @@
 {
 
 }
-
+/* 
 #getRestaurantButton {
     border-radius: 10px;
     background-color: whitesmoke; 
@@ -51,12 +59,66 @@
     display: inline-block;
     font-size: 16px;
     margin-left: 8px;
+} */
+
+#getRestaurantButton {
+	box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+	background-color:#768d87;
+	border-radius:5px;
+	border:1px solid #566963;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:11px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #2b665e;
+}
+#getRestaurantButton:hover {
+	background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+	background-color:#6c7c7c;
+}
+#getRestaurantButton:active {
+	position:relative;
+	top:1px;
 }
 
 #searchBar{
     border-radius: 10px;
-
+    margin-right: 10px;
     padding: 10px;
+}
+
+#loginButton {
+	box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+	background-color:#79bbff;
+	border-radius:6px;
+	border:1px solid #84bbf3;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #528ecc;
+}
+#loginButton:hover {
+	background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+	background-color:#378de5;
+}
+#loginButton:active {
+	position:relative;
+	top:1px;
+}
+
+.restaurant {
+  border-radius: 8px;  
 }
 
 .restImage{

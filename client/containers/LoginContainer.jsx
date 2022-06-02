@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, Outlet } from 'react-router-dom';
+import axios from 'axios';
+import * as actions from '../actions/actions.jsx';
 // import from child components...
 
 const mapStateToProps = state => ({
@@ -8,7 +10,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  
+  checkLogin: async (usernameInput, passwordInput) => {
+    const data = await actions.checkLogin(usernameInput, passwordInput);
+    // console.log('data in dispatch', data);
+    data.data.isLoggedIn === true ? dispatch(actions.checkUserLogin(data.data.isLoggedIn, data.data.username, data.data.profilePicture)) : '';
+  }
 });
 
 
@@ -17,31 +23,35 @@ const mapDispatchToProps = dispatch => ({
 //   return response;
 // };
 
-let usernameInput;
-function usernameData (e) {
-  // console.log('usernameInput', usernameInput);
-  usernameInput = e.target.value;
-  return usernameInput;
-}
-
-let passwordInput;
-function passwordData (e) {
-  // console.log('passwordInput', passwordInput);
-  passwordInput = e.target.value;
-  return passwordInput;
-}
-
 const LoginContainer = props => {
+
+  let usernameInput;
+  function usernameData (e) {
+  // console.log('usernameInput', usernameInput);
+    usernameInput = e.target.value;
+    return usernameInput;
+  }
+
+  let passwordInput;
+  function passwordData (e) {
+    // console.log('passwordInput', passwordInput);
+    passwordInput = e.target.value;
+    return passwordInput;
+  }
   
   return (
     <div>
       <input id="username" placeholder="username" onChange= { usernameData } required></input>
       <br></br><br></br>
-      <input id="password" placeholder="password" onChange= { passwordData }></input>
+      <input id="password" type="password" placeholder="password" onChange= { passwordData }></input>
       <br></br><br></br>
       <Link id="signUpButton" to="/api/signup"> Sign up </Link>
       <br></br><br></br>
-      <button id="loginButton" onClick={() => console.log( 'this will check if user is logged in' ) }> Login </button>
+      <button id="loginButton" onClick={() => props.checkLogin(usernameInput, passwordInput) }> Login </button>
+      <br></br>
+      <br></br>
+      {props.isLoggedIn ? <Link to="/api/home"> UHNGHHHHHHHH </Link> : <Link to="/api/home"> Continue As Guest (not recommended) </Link>}
+      {/* {props.isLoggedIn ? <p> UHNGHHHHHHHH </p> : ''} */}
       <Outlet/>
     </div>
   );

@@ -7,17 +7,30 @@ const initialState = {
   longitude: 0,
   latitude: 0,
   isLoggedIn: false,
+  username: '',
+  profilePicture: '',
 };
 
 const UsersReducer = (state = initialState, action) => {
 
+  // console.log('username in reducer', action.payload);
+  console.log('username in reducer', action);
+
   switch(action.type) {
+
     case types.GET_USER_LOCATION:
       return {
         ...state,
         longitude: action.payload.longitude,
         latitude: action.payload.latitude,
+      };
+    case types.CHECK_USER_LOGIN:
+      console.log('check user login', action);
+      return {
+        ...state,
         isLoggedIn: action.payload.isLoggedIn,
+        username: action.payload.username,
+        profilePicture: action.payload.profilePicture,
       };
 
     default:

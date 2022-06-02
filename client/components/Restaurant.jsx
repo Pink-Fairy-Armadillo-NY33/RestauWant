@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Restaurant = props => {
-  
+
   const {name, imgUrl, price, rating, address } = props;
 
   return(

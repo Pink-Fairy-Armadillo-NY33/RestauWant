@@ -18,8 +18,8 @@ ReactDOM.render(
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<MainContainer />}/>
-          <Route path='/api/login' element={<LoginContainer />}/>
+          <Route path='/' element={<LoginContainer />}/>
+          <Route path='/api/home' element={<MainContainer />}/>
           <Route path='/api/signup' element={<SignUpContainer />}/>
         </Routes>
       </BrowserRouter>

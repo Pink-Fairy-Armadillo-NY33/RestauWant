@@ -20,13 +20,13 @@ const methodOverride = require('method-override');
 const partials = require('express-partials');
 // const { default: Restaurant } = require('./client/components/Restaurant');
 
-// mongoose.connect(MONGO_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   dbName: 'ResturantDb'
-// })
-//   .then(() => console.log('Connected to Mongo DB.'))
-//   .catch(err => console.log(err));
+mongoose.connect(MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  dbName: 'ResturantDb'
+})
+  .then(() => console.log('Connected to Mongo DB.'))
+  .catch(err => console.log(err));
 
 app.use(express.json());
 
@@ -104,15 +104,15 @@ app.use(function(req, res, next) {
 //   return;
 // });
 
-app.use('/api/login', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '../client/public/index.html'));
-});
+// app.use('/api/login', (req, res, next) => {
+//   res.sendFile(path.join(__dirname, '../client/public/index.html'));
+// });
 
 // app.use('/api/secret', (req, res, next) => {
 //   return res.sendFile(path.join(__dirname, '/secret.html'));
 // });
 
-app.use('/api/secret', ensureAuthenticated);
+// app.use('/api/secret', ensureAuthenticated);
 
 function ensureAuthenticated(req, res, next) {
   console.log('req.session.passport.user', req.session.passport.user);
@@ -147,9 +147,6 @@ app.get('/api/auth/github/callback', passport.authenticate('github', { failureRe
 
 
 
-
-
-
 // USER ENDPOINT
 // create a user router to handle all requests related to users in the database
 const userRouter = express.Router();
@@ -157,14 +154,19 @@ app.use('/api/user', userRouter);
 
 // Create a user in the database
 // http://localhost:8080/user/
-userRouter.post('/', userController.createUser, (req, res) => {
-  return res.send(res.locals.newUser);
+userRouter.post('/signup', userController.createUser, (req, res) => {
+  return res.redirect('/api/home');
+});
+
+userRouter.post('/login', userController.getUser, (req, res) => {
+  // console.log('retrieved user property:', res.locals.retrievedUser);
+  return res.send(res.locals.retrievedUser);
 });
 
 // Get all users from the database
 // http://localhost:8080/user/
 userRouter.get('/', userController.getAllUsers, (req, res) => {
-  return res.send(res.locals.allRetrievedUsers);
+  return res.redirect('/api/home');
 });
 
 // Get a specific user from the database
