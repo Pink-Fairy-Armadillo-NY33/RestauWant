@@ -164,7 +164,7 @@ button:hover {
     font-weight: 500;
     display: flex;
     padding: 4% 8%;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     background-color: rgb(175, 19, 214);
     /* background-color: #212121; */
@@ -210,14 +210,13 @@ button:hover {
 #getRestaurantButton {
     border-radius: 10px;
     background-color: black;
-    border: none;
+    border: 2px solid black;
     font-weight: 900;
     color: whitesmoke;
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     padding: 0.8em 1em;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 16px;
     margin-left: 8px;
     margin-bottom: 10px;
@@ -226,7 +225,6 @@ button:hover {
 #getRestaurantButton:hover {
     background-color: whitesmoke;
     color: black;
-    border: 2px solid black;
 }
 
 #getRestaurantButton:active {
@@ -250,12 +248,21 @@ button:hover {
     font-style: italic;
     color: rgba(175, 19, 214, 0.5);
 }
+#searchBar:hover::placeholder {
+    color: rgb(175, 19, 214);
+    transition: 0.3s ease;
+}
 #searchBar:hover {
     color: rgb(175, 19, 214);
     font-size:1rem;
     font-weight: 900;
-
     transition: 0.3s ease;
+}
+#searchBar:focus {
+    outline: none;
+}
+.empty-star {
+    background-color: rgba(0,0,0,0) !important;
 }
 
 .restImage {
@@ -273,22 +280,27 @@ button:hover {
 }
 
 .logback {
-    width: 100vw;
-    height: 100vh;
-    background: whitesmoke;
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     margin: 0;
     padding: 0;
     display: flex;
 }
 
 .logbox {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     /* align-self: center; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    margin: 10% auto;
     width: 400px;
     height: 500px;
     border-radius: 10px;
@@ -300,6 +312,8 @@ button:hover {
 }
 
 .googleAuth-btn {
+    text-decoration: none;
+    color: black;
     background: #fff;
     display: flex;
     flex-direction: row;
@@ -324,8 +338,11 @@ button:hover {
 .or {
     width: 40px;
     height: 40px;
-    background: rgb(18, 167, 226);
+    color: black;
+    /* background: rgb(175, 19, 214); */
     border-radius: 50%;
+    border: 1px solid black;
+    font-family: 'Poppins', sans-serif;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     line-height: 40px;
     text-align: center;
@@ -362,7 +379,7 @@ input[type='password']:focus {
     padding: 0.5em 1.5em;
     font-size: 1rem;
     font-weight: 700;
-    background-color: rgb(175, 19, 214);
+    background-color: black;
     color: whitesmoke;
     margin: 0.3em 0em;
 }
@@ -381,10 +398,34 @@ input[type='password']:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    justify-content: center;
     margin: 10% auto;
     width: 400px;
     height: 500px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(235, 235, 235, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(125, 125, 125, 0.4);
+}
+.signbox input {
+    border: none;
+    width: 300px;
+    font-size: 1rem;
+    padding: 10px 10px;
+    border-bottom: 1px solid black;
+}
+.create-user {
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}
+.create-user:hover {
+    background-color: whitesmoke;
+    color: black;
+    border: 2px solid black;
+    transition: 0.7s ease;
+}
+.signbox input:focus {
+    outline: none;
+    border-bottom: 2px solid rgb(175, 19, 214);
+    transition: 0.5s ease;
 }

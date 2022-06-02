@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 // import React from 'react';
 
 function SignUp(props) {
+
   return (
     <div className='logback'>
       <div className='signbox'>
@@ -51,7 +53,7 @@ function SignUp(props) {
         <div className=''>
           <input
             value='Sign Up!'
-            className=''
+            className='create-user'
             type='button'
             // onClick={props.helperFunc}
           />

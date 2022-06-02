@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from 'react';
-
+import axios from 'axios';
 // import React from 'react';
 
 function LogIn(props) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  // const sendToVerify = () => {
+  //   axios.post(URL_TO_VERIFY, {
+  //     username: username,
+  //     password: password,
+  //   })
+  // }
   return (
     <div className='logback'>
       <div className='logbox'>
