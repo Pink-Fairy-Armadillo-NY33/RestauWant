@@ -8,7 +8,7 @@ export default function Header() {
 
   useEffect(() => {
     axios.get('/getGUser', { withCredentials: true }).then((response) => {
-      // console.log('HEADER GETTING USER: ', response);
+      console.log('HEADER GETTING USER: ', response.data);
       if (response.data.verified) {
         setVerf(response.data.verified);
         setName(response.data.fullName);

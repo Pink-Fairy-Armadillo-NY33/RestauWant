@@ -49,7 +49,7 @@ router.get('/protected', (req, res) => {
 });
 
 router.get('/getGUser', isLoggedIn, (req, res) => {
-  res.locals.loggedIn = { verified: true, fullName: req.user.displayName };
+  res.locals.loggedIn = { verified: true, fullName: req.user.name };
   res.send(res.locals.loggedIn);
 });
 
