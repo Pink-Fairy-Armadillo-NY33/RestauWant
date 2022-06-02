@@ -17,6 +17,7 @@ userController.createUser = async (req, res, next) => {
   }
 };
 
+
 //Asynchronous get request to the database which returns all User documents
 userController.getAllUsers = async (req, res, next) => {
   // Find method to find all users
@@ -28,6 +29,29 @@ userController.getAllUsers = async (req, res, next) => {
       res.locals.allRetrievedUsers = users;
       return next();
 
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+userController.verifyUser = async (req, res, next) => {
+  try {
+    // grab data from req body
+    console.log('req.body, ', req.body);
+    const { userName, password } = req.body; 
+    if (!userName || !password) return next('missing userName and/or password');
+    // Create method to create a new user in db
+    User.findOne({userName}, (err, user) => {
+      if (err) { return next(err); }
+      else if (!user) { return next('no user found'); }
+      else {
+        console.log('found user', user);
+        if (user.password === password) {
+          res.locals.user = user;
+          return next();
+        } else { return next('incorrect username/password'); }
+      }
     });
   } catch (error) {
     console.log(error);
