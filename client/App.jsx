@@ -1,21 +1,24 @@
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import MainContainer from './components/containers/MainContainer.jsx';
+import SignUp from './components/pages/SignInPage.jsx';
+import LogIn from './components/pages/LogInPage.jsx';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import MainContainer from './containers/MainContainer.jsx';
-import Header from './components/Header.jsx';
+import Header from './components/layout/Header.jsx';
 
-import store from '../client/store.jsx';
-import { Provider } from 'react-redux';
-import './style.css';
+function App() {
+  return (
+    <div className=''>
+      <BrowserRouter>
+        <Header />
 
-ReactDOM.render(
-  <div className="App">
-    <h1>RestauWant</h1>
-    <Provider store={store}>
-      <Header />
-      <MainContainer />
-    </Provider>
-  </div>,
-  document.querySelector('#root')
-);
+        <Routes>
+          <Route path='/' element={<MainContainer />} />
+          <Route path='/login' element={<LogIn />} />
+          <Route path='/signup' element={<SignUp />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
 
-
+export default App;

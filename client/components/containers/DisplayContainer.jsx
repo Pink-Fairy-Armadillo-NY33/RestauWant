@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import from child components...
-import Restaurant from '../components/Restaurant.jsx';
+import Restaurant from '../Restaurant.jsx';
 
-import { getRestaurants } from '../actions/restaurantActionCreator.jsx';
+import { getRestaurants } from '../../actions/restaurantActionCreator.jsx';
 
 
 class DisplayContainer extends Component {
@@ -24,10 +24,12 @@ class DisplayContainer extends Component {
     
 
     return (
-      <div className="Display" style={{margin: '20px'}}>
-        <h1>Restaurants</h1>
-        {restaurantsArr}
-      </div>
+      <>
+        <h1 className="restaurants-title">Restaurants</h1>
+        <div className="Display">
+          {restaurantsArr}
+        </div>
+      </>
     ); 
   }
 }

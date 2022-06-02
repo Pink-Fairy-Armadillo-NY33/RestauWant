@@ -1,48 +1,167 @@
-.App
-{
-    font-family: Helvetica, Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,500;0,700;0,800;0,900;1,100&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.App {
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
     background-color: white;
-    padding: 25px 50px 50px 50px;
-    /* background-image: url("alex-haney-CAhjZmVk5H4-unsplash.jpg"); */
 }
 
-.Header
-{
-    /* background-image: url("alex-haney-CAhjZmVk5H4-unsplash.jpg"); */
+.logo {
+    text-shadow: 2px 2px black;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+    text-decoration: none;
+    color: white;
 }
 
-.Display
-{
-    
+.Header {
+    position: fixed;
+    max-height: 100px;
+    width: 100%;
+    box-shadow: 0px 5px 20px 2px rgb(208, 120, 230);
+    z-index: 100;
+    padding: 1% 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background: url("./alex-haney-CAhjZmVk5H4-unsplash.jpg"); */
+    /* background: #29339B; */
+    /* background: rgb(18, 167, 226); */
+    background: rgb(175, 19, 214);
+    color: white;
 }
 
-.Restaurant
-{
-    
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
 }
 
-.Search
-{
+.btn-group .btn {
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 0.5em 1.5em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background-color: black;
+    color: whitesmoke;
+    margin: 0.3em 0em;
+}
+
+.btn-group .signup-btn {
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid whitesmoke;
+    color: whitesmoke;
+    /* BLUE: #0003ba; */
+}
+
+.btn-group .login-btn {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    text-decoration: none;
+}
+
+.login-btn:hover {
+    background-color: whitesmoke;
+    color: rgb(175, 19, 214);
+    transition: 0.3s ease;
+}
+
+.signup-btn {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    text-decoration: none;
+}
+
+.signup-btn:hover {
+    border: 2px solid black;
+    color: whitesmoke;
+    background-color: rgb(175, 19, 214);
+    transition: 0.3s ease;
+}
+
+button:hover {
+    cursor: pointer;
+    /* background-color: black; */
+    transition: 0.5s ease;
+}
+
+.MainContainer {
+    padding: 160px 5%;
+}
+
+.Display {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.restaurants-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    padding: 20px 0px;
+}
+
+.filters-container {
+    display: flex;
+    gap: 30px;
+    padding: 2% 5%;
+    font-size: 0.8rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-x: scroll;
+}
+
+.restaurant-card {
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid black;
+    border-radius: 20px;
+    min-height: 50vh;
+    box-shadow: 5px 5px 10px 5px rgb(211, 211, 211);
+}
+
+.restaurant-img-container {
+    min-height: 200px;
+}
+
+.restaurant-img {
+    width: 100%;
+    height: 200px;
+}
+
+.restaurant-info {
+    padding: 2% 5%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.restaurant-name {
+    text-align: center;
+    align-self: center;
+}
+
+.Search {
     padding-top: 5px;
     padding-bottom: 5px;
     display: flex;
     justify-content: flex-start;
-    
 }
 
-.SearchContainer
-{
-  
-}
-
-.MainContainer
-{
-
-}
+.SearchContainer {}
 
 #getRestaurantButton {
     border-radius: 10px;
-    background-color: whitesmoke; 
+    background-color: whitesmoke;
     border: none;
     color: black;
     padding: 15px 32px;
@@ -53,25 +172,148 @@
     margin-left: 8px;
 }
 
-#searchBar{
+#getRestaurantButton:hover {
+    background-color: grey;
+}
+
+#getRestaurantButton:active {
+    background-color: black;
+    color: white;
+}
+
+#searchBar {
     border-radius: 10px;
 
     padding: 10px;
 }
 
-.restImage{
+.restImage {
     max-width: 300px;
     height: auto;
-    
 }
-.img{
+
+.img {
     width: 200px;
     height: auto;
 }
- 
 
-
-.checkbox{
+.checkbox {
     padding-right: 5px;
+}
 
+.logback {
+    width: 100vw;
+    height: 100vh;
+    background: rgb(145, 135, 151);
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.logbox {
+    /* align-self: center; */
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 5% auto;
+    width: 400px;
+    height: 500px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.logbox h2 {
+    margin: 5%;
+}
+
+.googleAuth-btn {
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    /* border: none; */
+    border-width: thin;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 0.5em 1em;
+    margin: 0.2em;
+    align-items: center;
+    border-radius: 8px;
+    margin: 2%;
+}
+
+.googleAuth-btn:hover {
+    cursor: pointer;
+    background-color: #dd4b39;
+    color: white;
+    transition: 0.5s ease;
+}
+
+.or {
+    width: 40px;
+    height: 40px;
+    background: rgb(18, 167, 226);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    line-height: 40px;
+    text-align: center;
+    margin: 2%;
+}
+
+.logbox input[type='text'],
+input[type='password'] {
+    /* box-sizing: border-box; */
+    margin-bottom: 20px;
+    padding: 4px;
+    width: 220px;
+    height: 32px;
+    border: none;
+    border-bottom: 1px solid #aaa;
+    font-weight: 400;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+.logbox input[type='text']:focus,
+input[type='password']:focus {
+    border-bottom: 2px solid rgb(175, 19, 214);
+    color: #16a085;
+    transition: 0.2s ease;
+    outline: none;
+}
+
+.logbox .logbtn {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 0.5em 1.5em;
+    font-size: 1rem;
+    font-weight: 700;
+    background-color: rgb(175, 19, 214);
+    color: whitesmoke;
+    margin: 0.3em 0em;
+}
+
+.logbtn:hover {
+    cursor: pointer;
+    background-color: #dd4b39;
+    color: white;
+    transition: 0.5s ease;
+    border: none;
+}
+
+.signbox {
+    /* align-self: center; */
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 5% auto;
+    width: 400px;
+    height: 500px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
