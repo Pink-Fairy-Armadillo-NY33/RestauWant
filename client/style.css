@@ -1,390 +1,438 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,500;0,700;0,800;0,900;1,100&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .App {
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
-    background-color: white;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  background-color: white;
 }
 
 .logo {
-    /* text-shadow: 1px 1px white; */
-    font-family: 'Poppins', sans-serif;
-    font-size: 2rem;
-    font-weight: 400;
-    text-decoration: none;
-    color: white;
+  /* text-shadow: 1px 1px white; */
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  text-decoration: none;
+  color: white;
 }
 
 .Header {
-    position: fixed;
-    max-height: 100px;
-    width: 100%;
-    /* DARK MODE?
+  position: fixed;
+  max-height: 100px;
+  width: 100%;
+  /* DARK MODE?
     box-shadow: 0px 5px 20px 2px #212121; */
-    box-shadow: 0px 5px 20px 2px rgb(208, 120, 230);
-    z-index: 100;
-    padding: 1% 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* background: url("./alex-haney-CAhjZmVk5H4-unsplash.jpg"); */
-    /* background: #29339B; */
-    /* background: rgb(18, 167, 226); */
-    background: rgb(175, 19, 214);
-    color: white;
+  box-shadow: 0px 5px 20px 2px rgb(208, 120, 230);
+  z-index: 100;
+  padding: 1% 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background: url("./alex-haney-CAhjZmVk5H4-unsplash.jpg"); */
+  /* background: #29339B; */
+  /* background: rgb(18, 167, 226); */
+  background: rgb(175, 19, 214);
+  color: white;
 }
 
 .btn-group {
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
 }
 
 .btn-group .btn {
-    border: 2px solid black;
-    border-radius: 50px;
-    padding: 0.5em 1.5em;
-    font-size: 0.75rem;
-    font-weight: 700;
-    background-color: black;
-    color: whitesmoke;
-    margin: 0.3em 0em;
+  border: 2px solid black;
+  border-radius: 50px;
+  padding: 0.5em 1.5em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: black;
+  color: whitesmoke;
+  margin: 0.3em 0em;
 }
 
 .btn-group .signup-btn {
-    background-color: rgba(0, 0, 0, 0);
-    border: 2px solid black;
-    color: black;
-    /* BLUE: #0003ba; */
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid black;
+  color: black;
+  /* BLUE: #0003ba; */
 }
 
 .btn-group .login-btn {
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  text-decoration: none;
 }
 
 .login-btn:hover {
-    background-color: whitesmoke;
-    color: rgb(175, 19, 214);
-    border: 1px solid black;
-    transition: 0.3s ease;
+  background-color: whitesmoke;
+  color: rgb(175, 19, 214);
+  border: 1px solid black;
+  transition: 0.3s ease;
 }
 
 .signup-btn {
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  text-decoration: none;
 }
 
 .signup-btn:hover {
-    border: 2px solid white;
-    color: white;
-    transition: 0.3s ease;
+  border: 2px solid white;
+  color: white;
+  transition: 0.3s ease;
 }
 
 button:hover {
-    cursor: pointer;
-    /* background-color: black; */
-    transition: 0.5s ease;
+  cursor: pointer;
+  /* background-color: black; */
+  transition: 0.5s ease;
 }
 
 .MainContainer {
-    padding: 160px 5%;
+  padding: 160px 5%;
 }
 
 .Display {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 .restaurants-title {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    padding: 20px 0px;
-    color: #989898;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  padding: 20px 0px;
+  color: #989898;
 }
 
 .filters-container {
-    color: black;
-    border: 2px solid #212121;
-    border-radius: 5px;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    gap: 30px;
-    padding: 2% 5%;
-    font-size: 0.8rem;
-    justify-content: flex-start;
-    align-items: flex-start;
-    overflow-x: scroll;
-    box-shadow: 5px 10px 10px rgb(197, 197, 197);
+  color: black;
+  border: 2px solid #212121;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  gap: 30px;
+  padding: 2% 5%;
+  font-size: 0.8rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: scroll;
+  box-shadow: 5px 10px 10px rgb(197, 197, 197);
 }
 
 .restaurant-card {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    font-family: 'Poppins', sans-serif;
-    border: 2px solid black;
-    border-radius: 20px;
-    background-color: rgba(235, 235, 235, 0.8);
-    color: #121212;
-    min-height: 50vh;
-    /* DARK MODE? */
-    /* color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  border: 2px solid black;
+  border-radius: 20px;
+  background-color: rgba(235, 235, 235, 0.8);
+  color: #121212;
+  min-height: 50vh;
+  /* DARK MODE? */
+  /* color: whitesmoke;
     box-shadow: 0px 0px 10px 8px #212121; */
-    box-shadow: 5px 5px 10px 5px rgb(211, 211, 211);
+  box-shadow: 5px 5px 10px 5px rgb(211, 211, 211);
 }
 
 .restaurant-img-container {
-    min-height: 200px;
+  min-height: 200px;
 }
 
 .restaurant-img {
-    width: 100%;
-    height: 200px;
+  width: 100%;
+  height: 200px;
 }
 
 .restaurant-info {
-    padding: 2% 5%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
+  padding: 2% 5%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
 }
 
 .restaurant-buttons {
-    font-weight: 500;
-    display: flex;
-    padding: 4% 8%;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(175, 19, 214);
-    /* background-color: #212121; */
+  font-weight: 500;
+  display: flex;
+  padding: 4% 8%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(175, 19, 214);
+  /* background-color: #212121; */
 }
 
 .restaurant-buttons a {
-    color: white;
+  color: white;
 }
 
 .restaurant-name {
-    text-align: center;
-    align-self: center;
+  text-align: center;
+  align-self: center;
 }
 .restaurant-address {
-    text-align: center;
-    font-weight:400;
-    align-self: center;
+  text-align: center;
+  font-weight: 400;
+  align-self: center;
 }
 
 .Search {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    display: flex;
-    justify-content: flex-start;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: flex;
+  justify-content: flex-start;
 }
 .rate-price-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-    text-align: center;
-    font-weight: 900;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  text-align: center;
+  font-weight: 900;
 }
 .restaurant-rating {
-    color: rgb(207, 11, 24);
-    border-right: 2px solid #8f8f8f;
+  color: rgb(207, 11, 24);
+  border-right: 2px solid #8f8f8f;
 }
 .restaurant-price {
-    color: green;
+  color: green;
 }
 
-.SearchContainer {}
+.SearchContainer {
+}
 
 #getRestaurantButton {
-    border-radius: 10px;
-    background-color: black;
-    border: none;
-    font-weight: 900;
-    color: whitesmoke;
-    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    padding: 0.8em 1em;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-left: 8px;
-    margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: black;
+  border: none;
+  font-weight: 900;
+  color: whitesmoke;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 0.8em 1em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 8px;
+  margin-bottom: 10px;
 }
 
 #getRestaurantButton:hover {
-    background-color: whitesmoke;
-    color: black;
-    border: 2px solid black;
+  background-color: whitesmoke;
+  color: black;
+  border: 2px solid black;
 }
 
 #getRestaurantButton:active {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
 }
 
 #searchBar {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    border: none;
-    border-bottom: 1px solid rgba(175, 19, 214, 0.5);
-    padding: 0px 20px;
-    min-width: 33%;
-    font-weight: 900;
-    color: rgb(175, 19, 214);
-    margin-bottom: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border: none;
+  border-bottom: 1px solid rgba(175, 19, 214, 0.5);
+  padding: 0px 20px;
+  min-width: 33%;
+  font-weight: 900;
+  color: rgb(175, 19, 214);
+  margin-bottom: 10px;
 }
 
 #searchBar::placeholder {
-    font-weight: 300;
-    font-style: italic;
-    color: rgba(175, 19, 214, 0.5);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(175, 19, 214, 0.5);
 }
 #searchBar:hover {
-    color: rgb(175, 19, 214);
-    font-size:1rem;
-    font-weight: 900;
+  color: rgb(175, 19, 214);
+  font-size: 1rem;
+  font-weight: 900;
 
-    transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .restImage {
-    max-width: 300px;
-    height: auto;
+  max-width: 300px;
+  height: auto;
 }
 
 .img {
-    width: 200px;
-    height: auto;
+  width: 200px;
+  height: auto;
 }
 
 .checkbox {
-    padding-right: 5px;
+  padding-right: 5px;
 }
 
 .logback {
-    width: 100vw;
-    height: 100vh;
-    background: whitesmoke;
-    margin: 0;
-    padding: 0;
-    display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: whitesmoke;
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 
 .logbox {
-    /* align-self: center; */
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  /* align-self: center; */
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    margin: 10% auto;
-    width: 400px;
-    height: 500px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  margin: 10% auto;
+  width: 400px;
+  height: 500px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .logbox h2 {
-    margin: 5%;
+  margin: 5%;
 }
 
 .googleAuth-btn {
-    background: #fff;
-    display: flex;
-    flex-direction: row;
-    /* border: none; */
-    border-width: thin;
-    font-size: 1.5rem;
-    font-weight: 500;
-    padding: 0.5em 1em;
-    margin: 0.2em;
-    align-items: center;
-    border-radius: 8px;
-    margin: 2%;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  /* border: none; */
+  border-width: thin;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 0.5em 1em;
+  margin: 0.2em;
+  align-items: center;
+  border-radius: 8px;
+  margin: 2%;
 }
 
 .googleAuth-btn:hover {
-    cursor: pointer;
-    background-color: #dd4b39;
-    color: white;
-    transition: 0.5s ease;
+  cursor: pointer;
+  background-color: #dd4b39;
+  color: white;
+  transition: 0.5s ease;
 }
 
 .or {
-    width: 40px;
-    height: 40px;
-    background: rgb(18, 167, 226);
-    border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-    line-height: 40px;
-    text-align: center;
-    margin: 2%;
+  width: 40px;
+  height: 40px;
+  background: rgb(18, 167, 226);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  line-height: 40px;
+  text-align: center;
+  margin: 2%;
 }
 
 .logbox input[type='text'],
 input[type='password'] {
-    /* box-sizing: border-box; */
-    margin-bottom: 20px;
-    padding: 4px;
-    width: 220px;
-    height: 32px;
-    border: none;
-    border-bottom: 1px solid #aaa;
-    font-weight: 400;
-    font-size: 15px;
-    transition: 0.2s ease;
+  /* box-sizing: border-box; */
+  margin-bottom: 20px;
+  padding: 4px;
+  width: 220px;
+  height: 32px;
+  border: none;
+  border-bottom: 1px solid #aaa;
+  font-weight: 400;
+  font-size: 15px;
+  transition: 0.2s ease;
 }
 
 .logbox input[type='text']:focus,
 input[type='password']:focus {
-    border-bottom: 2px solid rgb(175, 19, 214);
-    color: #16a085;
-    transition: 0.2s ease;
-    outline: none;
+  border-bottom: 2px solid rgb(175, 19, 214);
+  color: #16a085;
+  transition: 0.2s ease;
+  outline: none;
 }
 
 .logbox .logbtn {
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    border: 2px solid black;
-    border-radius: 8px;
-    padding: 0.5em 1.5em;
-    font-size: 1rem;
-    font-weight: 700;
-    background-color: rgb(175, 19, 214);
-    color: whitesmoke;
-    margin: 0.3em 0em;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 0.5em 1.5em;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: rgb(175, 19, 214);
+  color: whitesmoke;
+  margin: 0.3em 0em;
 }
 
 .logbtn:hover {
-    cursor: pointer;
-    background-color: #dd4b39;
-    color: white;
-    transition: 0.5s ease;
-    border: none;
+  cursor: pointer;
+  background-color: #dd4b39;
+  color: white;
+  transition: 0.5s ease;
+  border: none;
 }
 
 .signbox {
-    /* align-self: center; */
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  /* align-self: center; */
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    margin: 10% auto;
-    width: 400px;
-    height: 500px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  margin: 10% auto;
+  width: 400px;
+  height: 500px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.signbox input[type='text'],
+input[type='password'],
+input[type='email'] {
+  /* box-sizing: border-box; */
+  margin-bottom: 20px;
+  padding: 4px;
+  width: 220px;
+  height: 32px;
+  border: none;
+  border-bottom: 1px solid #aaa;
+  font-weight: 400;
+  font-size: 15px;
+  transition: 0.2s ease;
+}
+
+.signbox input[type='text']:focus,
+input[type='email']:focus,
+input[type='password']:focus {
+  border-bottom: 2px solid rgb(175, 19, 214);
+  color: #16a085;
+  transition: 0.2s ease;
+  outline: none;
+}
+
+.signbox .signbtn {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 0.5em 1.5em;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: rgb(175, 19, 214);
+  color: whitesmoke;
+  margin: 0.3em 0em;
+}
+
+.signbtn:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  transition: 0.5s ease;
+  border: none;
 }
