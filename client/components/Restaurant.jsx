@@ -29,7 +29,7 @@ class Restaurant extends Component {
       // display stars
       return result;
     };
-    const captainUnderpants = 'http://www.talkingwithtami.com/wp-content/uploads/2022/02/Turning_Red_OOH_Expres_287_Happy_MASTER_v3.0_Mech1_FS-scaled.jpg';
+    const captainUnderpants = 'https://external-preview.redd.it/vmYI8txGQchB0kfc7LbhPSIeiQhRnRx8BK8FjPA4oEg.jpg?auto=webp&s=114e08313ac895ef377f45bc3fb0d0dd2775c0ea';
     return (
       // <div className="restaurant">
       //   <div className="restImage">
