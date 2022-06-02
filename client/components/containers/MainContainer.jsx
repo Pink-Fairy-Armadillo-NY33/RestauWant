@@ -40,9 +40,9 @@ class MainContainer extends Component {
 
     return (
       <div className='MainContainer'>
-        Longitude: {this.props.users.longitude}
+        {/* Longitude: {this.props.users.longitude} */}
         <div></div>
-        Latitude: {this.props.users.latitude}
+        {/* Latitude: {this.props.users.latitude} */}
         <Search />
         <ul className='filters-container'>{filters}</ul>
         <DisplayContainer />

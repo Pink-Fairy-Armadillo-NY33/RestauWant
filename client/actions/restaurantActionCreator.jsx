@@ -53,7 +53,7 @@ export const getRestaurants = (params) => {
     fetch(`/api/restaurant/search?${searchTerms}`)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        console.log('FROM AC', data);
         dispatch({
           type: types.GET_RESTAURANTS,
           payload: data,

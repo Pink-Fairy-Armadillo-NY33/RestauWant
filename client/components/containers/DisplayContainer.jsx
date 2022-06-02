@@ -18,8 +18,8 @@ class DisplayContainer extends Component {
     // console.log(restaurants);
      
     for (let i = 0; i < restaurants.length; i++) {
-      const { id, name, price, rating, location, image_url} = restaurants[i];
-      restaurantsArr.push(<Restaurant imgUrl={image_url} name={name} address={location.display_address} price={price} rating={rating} />);
+      const { id, name, price, rating, location, image_url, phone, url} = restaurants[i];
+      restaurantsArr.push(<Restaurant imgUrl={image_url} name={name} address={location.display_address} price={price} rating={rating} phone={phone} site={url}/>);
     }
     
 

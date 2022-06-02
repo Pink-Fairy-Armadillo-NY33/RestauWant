@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
  
 import React, { Component } from 'react';
 import * as Actions from '../actions/types.jsx';
@@ -7,6 +8,7 @@ import { connect } from 'react-redux';
 class Restaurant extends Component {
   
   render() {
+    const captainUnderpants = 'http://www.talkingwithtami.com/wp-content/uploads/2022/02/Turning_Red_OOH_Expres_287_Happy_MASTER_v3.0_Mech1_FS-scaled.jpg';
     return (
       // <div className="restaurant">
       //   <div className="restImage">
@@ -24,16 +26,18 @@ class Restaurant extends Component {
       // </div>
       <div className="restaurant-card">
         <div className="restaurant-img-container">
-          <img className="restaurant-img"src={this.props.imgUrl} alt="" />
+          <img className="restaurant-img"src={this.props.imgUrl ? this.props.imgUrl : captainUnderpants} alt="" />
         </div>
         <div className="restaurant-info">
           <h2 className="restaurant-name">{this.props.name}</h2>
           <p className="restaurant-address">{this.props.address.join(' ')}</p>
-          <p className="restaurant-price">{this.props.price}</p>
-          <p className="restaurant-rating">{this.props.rating}</p>
+          <div className="rate-price-container">
+            <p className="restaurant-rating">Rating: {this.props.rating}/5</p>
+            <p className="restaurant-price">{this.props.price}</p>
+          </div>
         </div>
         <div className="restaurant-buttons">
-          <a className="website-btn"href="/">Visit Website</a>
+          <a className="website-btn" href={`${this.props.site}`} target="_blank">Visit Website</a>
           <a className="phone-btn" href={`tel:${this.props.phone}`}>Call Restaurant</a>
         </div>
       </div>
