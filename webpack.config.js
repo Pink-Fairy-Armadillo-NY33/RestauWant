@@ -18,8 +18,10 @@ module.exports = {
     }, 
     port: 3000,
     proxy: {
-      '/api/*': 'http://localhost:8080',
-    }
+      '/api/*': 'http://localhost:8080'
+    },
+    hot: true,
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -27,7 +29,7 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new ESLintPlugin({
-      extensions: [`js`, `jsx`],
+      extensions: ['js', 'jsx'],
       exclude: 'node_modules'
     }),
   ],
@@ -41,6 +43,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env','@babel/preset-react'],
+            plugins: ['@babel/plugin-transform-runtime', '@babel/transform-async-to-generator'],
           }
         }
       },

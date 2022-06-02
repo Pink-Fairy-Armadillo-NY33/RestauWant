@@ -6,7 +6,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 const userController = require('./controllers/userController');
 const restaurantController = require('./controllers/restaurantController');
-const MONGO_URI = 'mongodb+srv://project:scratchproject@cluster0.an6pg.mongodb.net/?retryWrites=true&w=majority';
+
+const MONGO_URI = 'mongodb+srv://gar12344:Pokemon0258631@cluster0.i3sqoka.mongodb.net/?retryWrites=true&w=majority';
 
 const passport = require('passport');
 const GitHubStrategy = require('passport-github2').Strategy;
@@ -17,6 +18,7 @@ const util = require('util');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const partials = require('express-partials');
+// const { default: Restaurant } = require('./client/components/Restaurant');
 
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
@@ -28,6 +30,8 @@ mongoose.connect(MONGO_URI, {
 
 app.use(express.json());
 
+// app.use('/', express.static(path.resolve(__dirname, '../client')));
+
 app.use(partials());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -35,9 +39,6 @@ app.use(methodOverride());
 app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
 app.use('/auth', passport.initialize());
 app.use('/auth', passport.session());
-
-
-
 
 
 // OAUTH ENDPOINT
@@ -53,7 +54,6 @@ passport.deserializeUser(function(obj, done) {
 });
 */
 
-
 passport.serializeUser(function(user, done) {
   console.log('user within serializeUser,', user.id);
   done(null, user.githubId);
@@ -62,7 +62,7 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(async function(id, done) {
   console.log('user within deserializeUser,', id);
   const user = await LoginUser.findById(id);
-  console.log("please fking work");
+  console.log('please fking work');
   done(null, user);
 });
 
@@ -90,24 +90,29 @@ function(accessToken, refreshToken, profile, done) {
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.header('Access-Control-Allow-Credentials',true);
+  res.header('Access-Control-Allow-Credentials', true);
   next();
 });
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
-  res.header('Access-Control-Allow-Credentials',true);
+  res.header('Access-Control-Allow-Credentials', true);
   next();
 });
 
-app.use('/api/login', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '/login.html'));
-});
+// app.get('/', (req, res) => {
+//   res.redirect('/');
+//   return;
+// });
+
+// app.use('/api/login', (req, res, next) => {
+//   res.sendFile(path.join(__dirname, '../client/public/index.html'));
+// });
 
 // app.use('/api/secret', (req, res, next) => {
 //   return res.sendFile(path.join(__dirname, '/secret.html'));
 // });
 
-app.use('/api/secret', ensureAuthenticated);
+// app.use('/api/secret', ensureAuthenticated);
 
 function ensureAuthenticated(req, res, next) {
   console.log('req.session.passport.user', req.session.passport.user);
@@ -142,9 +147,6 @@ app.get('/api/auth/github/callback', passport.authenticate('github', { failureRe
 
 
 
-
-
-
 // USER ENDPOINT
 // create a user router to handle all requests related to users in the database
 const userRouter = express.Router();
@@ -152,14 +154,19 @@ app.use('/api/user', userRouter);
 
 // Create a user in the database
 // http://localhost:8080/user/
-userRouter.post('/', userController.createUser, (req, res) => {
-  return res.send(res.locals.newUser);
+userRouter.post('/signup', userController.createUser, (req, res) => {
+  return res.redirect('/api/home');
+});
+
+userRouter.post('/login', userController.getUser, (req, res) => {
+  // console.log('retrieved user property:', res.locals.retrievedUser);
+  return res.send(res.locals.retrievedUser);
 });
 
 // Get all users from the database
 // http://localhost:8080/user/
 userRouter.get('/', userController.getAllUsers, (req, res) => {
-  return res.send(res.locals.allRetrievedUsers);
+  return res.redirect('/api/home');
 });
 
 // Get a specific user from the database
@@ -240,7 +247,7 @@ app.use((err, req, res, next) => {
   return res.status(errorObj.status).json(errorObj.message);
 });
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
@@ -272,3 +279,5 @@ Accept: application/json
   "token_type":"bearer"
 }
 */
+
+module.exports = server;
