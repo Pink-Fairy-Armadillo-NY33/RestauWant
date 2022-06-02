@@ -17,6 +17,7 @@ userController.createUser = async (req, res, next) => {
   }
 };
 
+
 //Asynchronous get request to the database which returns all User documents
 userController.getAllUsers = async (req, res, next) => {
   // Find method to find all users
