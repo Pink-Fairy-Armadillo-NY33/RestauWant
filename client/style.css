@@ -119,6 +119,8 @@ button:hover {
 }
 
 .restaurant-card {
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
     font-family: 'Poppins', sans-serif;
     border: 1px solid black;
@@ -143,6 +145,18 @@ button:hover {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+}
+
+.restaurant-buttons {
+    display: flex;
+    padding: 2% 10%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(175, 19, 214);
+}
+
+.restaurant-buttons a {
+    color: white;
 }
 
 .restaurant-name {

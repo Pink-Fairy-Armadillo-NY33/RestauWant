@@ -32,6 +32,10 @@ class Restaurant extends Component {
           <p className="restaurant-price">{this.props.price}</p>
           <p className="restaurant-rating">{this.props.rating}</p>
         </div>
+        <div className="restaurant-buttons">
+          <a className="website-btn"href="/">Visit Website</a>
+          <a className="phone-btn" href={`tel:${this.props.phone}`}>Call Restaurant</a>
+        </div>
       </div>
     );
   }

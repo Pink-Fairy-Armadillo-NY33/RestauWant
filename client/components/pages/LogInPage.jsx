@@ -8,13 +8,13 @@ function LogIn(props) {
       <div className='logbox'>
         <h2>Please Log in below </h2>
 
-        <button className='googleAuth-btn'>
+        <a href="http://localhost:8080/auth/google" className='googleAuth-btn'>
           <img
             src='https://colorlib.com/etc/lf/Login_v5/images/icons/icon-google.png'
             alt='GOOGLE'
           />
           oogle
-        </button>
+        </a>
         <div className='or'>OR</div>
 
         <div className=''>
