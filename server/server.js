@@ -26,7 +26,7 @@ const userRouter = require('./routers/userRouter');
 const restaurantRouter = require('./routers/restaurantRouter');
 const authRouter = require ('./routers/authRouter'); // all authentication things related seperated into this router for clarity
 
-app.use('/api/user', userRouter);
+app.use('/user', userRouter);
 app.use('/api/restaurant', restaurantRouter);
 app.use('/', authRouter);
 
