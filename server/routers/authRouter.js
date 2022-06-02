@@ -21,7 +21,7 @@ router.get('/auth/google', passport.authenticate('google', {scope : ['email','pr
 // whenever someone successfully logs in  we get re-directed to this route
 // this route was chosen in credentials when we got our Client ID and Client Secret
 router.get('/google/callback', passport.authenticate('google', {
-  successRedirect: '/protected',
+  successRedirect: 'http://localhost:3000/',
   failureRedirect: '/auth/failure',
 }));
   
@@ -30,8 +30,11 @@ router.get('/auth/failure', (req, res) => {
 });
 
 // can only access this route when user is logged in
-router.get('/protected', isLoggedIn, (req, res) => {
-  res.send(`Hello ${req.user.displayName}!`);
+// BEFORE: router.get('/protected', isLoggedIn, (req, res)
+router.get('http://localhost:3000/', isLoggedIn, (req, res) => {
+  res.locals.loggedIn = {verified: true, fullName: req.user.displayName};
+  res.send(res.locals.loggedIn);
+  //res.send(`Hello ${req.user.displayName}!`);
 });
   
 // when user wants to log out they call this route
