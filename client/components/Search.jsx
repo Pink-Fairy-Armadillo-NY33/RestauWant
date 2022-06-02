@@ -49,7 +49,7 @@ class Search extends Component {
             this.props.getRestaurants(this.state);
           }
           }
-        >find eats!
+        >I&apos;m Hungry!
         </button> 
 
       </div>
