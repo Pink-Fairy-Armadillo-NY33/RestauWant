@@ -40,10 +40,19 @@ userController.verifyUser = async (req, res, next) => {
     // grab data from req body
     console.log('req.body, ', req.body);
     const { userName, password } = req.body; 
+    if (!userName || !password) return next('missing userName and/or password');
     // Create method to create a new user in db
-    const data = await User.find({userName: userName, password: password});
-    if (data.length === 0) throw new Error;
-    else return next();
+    User.findOne({userName}, (err, user) => {
+      if (err) { return next(err); }
+      else if (!user) { return next('no user found'); }
+      else {
+        console.log('found user', user);
+        if (user.password === password) {
+          res.locals.user = user;
+          return next();
+        } else { return next('incorrect username/password'); }
+      }
+    });
   } catch (error) {
     console.log(error);
   }
