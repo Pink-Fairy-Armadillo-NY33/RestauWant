@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 // import React from 'react';
 
 function SignUp(props) {
+
   return (
     <div className='logback'>
       <div className='signbox'>
@@ -30,7 +32,7 @@ function SignUp(props) {
         <div className=''>
           <input
             className=''
-            placeholder='email'
+            placeholder='Email'
             type='email'
             id='email'
             name='email'
@@ -51,11 +53,20 @@ function SignUp(props) {
         <div className=''>
           <input
             value='Sign Up!'
-            className=''
+            className='create-user'
             type='button'
             // onClick={props.helperFunc}
           />
         </div>
+        <div className='or'>OR</div>
+        <p>Please use your google account to sign up:</p>
+        <a href='http://localhost:8080/auth/google' className='googleAuth-btn'>
+          <img
+            src='https://colorlib.com/etc/lf/Login_v5/images/icons/icon-google.png'
+            alt='GOOGLE'
+          />
+          oogle
+        </a>
       </div>
     </div>
   );

@@ -8,7 +8,28 @@ import { connect } from 'react-redux';
 class Restaurant extends Component {
   
   render() {
-    const captainUnderpants = 'http://www.talkingwithtami.com/wp-content/uploads/2022/02/Turning_Red_OOH_Expres_287_Happy_MASTER_v3.0_Mech1_FS-scaled.jpg';
+    const getStars = (rating) => {
+      // Result array will display the stars on the page
+      const result = [];
+      // NO FILL STAR
+      const emptyStar = <i className="empty-star fa-regular fa-star"></i>;
+      // HALF FILLED STAR
+      const halfStar = <i className="fa-solid fa-star-half-stroke"></i>;
+      // FULL STAR
+      const star = <i className="fa-solid fa-star"></i>;
+      // Loop to 5 (out of 5 stars)
+      for (let i = 0; i < 5; i ++) {
+        // if i is greater than the rating, push empty star
+        if (i > rating) result.push(emptyStar);
+        // if it's a half rating, push the half star
+        else if (rating - 0.5 === i) result.push(halfStar);
+        // push whole star
+        else result.push(star);
+      }
+      // display stars
+      return result;
+    };
+    const captainUnderpants = 'https://external-preview.redd.it/vmYI8txGQchB0kfc7LbhPSIeiQhRnRx8BK8FjPA4oEg.jpg?auto=webp&s=114e08313ac895ef377f45bc3fb0d0dd2775c0ea';
     return (
       // <div className="restaurant">
       //   <div className="restImage">
@@ -32,12 +53,12 @@ class Restaurant extends Component {
           <h2 className="restaurant-name">{this.props.name}</h2>
           <p className="restaurant-address">{this.props.address.join(' ')}</p>
           <div className="rate-price-container">
-            <p className="restaurant-rating">Rating: {this.props.rating}/5</p>
-            <p className="restaurant-price">{this.props.price}</p>
+            <p className="restaurant-rating">{getStars(this.props.rating)}</p>
+            <p className="restaurant-price">{this.props.price ? this.props.price : '-'}</p>
           </div>
         </div>
         <div className="restaurant-buttons">
-          <a className="website-btn" href={`${this.props.site}`} target="_blank">Visit Website</a>
+          <a className="website-btn" href={`${this.props.site}`} target="_blank">Yelp Page</a>
           <a className="phone-btn" href={`tel:${this.props.phone}`}>Call Restaurant</a>
         </div>
       </div>

@@ -1,20 +1,33 @@
 import React, { useState, useEffect } from 'react';
-
+import axios from 'axios';
 // import React from 'react';
 
+const googleAuthHelper = function () {
+  window.open('http://localhost:8080/auth/google', '_self');
+};
+
 function LogIn(props) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  // const sendToVerify = () => {
+  //   axios.post(URL_TO_VERIFY, {
+  //     username: username,
+  //     password: password,
+  //   })
+  // }
   return (
     <div className='logback'>
       <div className='logbox'>
         <h2>Please Log in below </h2>
 
-        <a href="http://localhost:8080/auth/google" className='googleAuth-btn'>
+        <button onClick={googleAuthHelper} className='googleAuth-btn'>
           <img
             src='https://colorlib.com/etc/lf/Login_v5/images/icons/icon-google.png'
             alt='GOOGLE'
           />
           oogle
-        </a>
+        </button>
         <div className='or'>OR</div>
 
         <div className=''>
