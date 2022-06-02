@@ -1,5 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
+const User = require('./models/userModel');
 
 const GOOGLE_CLIENT_ID = '565243218986-lgcfkqtr5g7jb9h69j67ef8klcl2faa9.apps.googleusercontent.com';
 const GOOGLE_CLIENT_SECRET = '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';
@@ -15,8 +16,12 @@ passport.use(new GoogleStrategy({
 // this is what happens when someone successfully logs in
 // we can create or find a user from a database here 
 function(request, accessToken, refreshToken, profile, done) {
-  return done(null, profile);
-  // User.findOrCreate({ googleId: profile.id }, function (err, user) {return done(err, user)});
+  //console.log(profile);
+  //return done(null, profile);
+  User.findOrCreate({name: profile.displayName}, {name: profile.displayName, userName: profile.email, password: '1234'}, (err, user) => {
+    console.log(user);
+    return done(err, user);
+  }); 
 }
 ));
 
